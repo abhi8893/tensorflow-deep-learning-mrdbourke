@@ -10,6 +10,6 @@ setup(
     name='src',
     version='0.0.1',
     packages=find_packages(include=['src', 'src.*']),
-    install_requires=requirements
-
+    install_requires=requirements,
+    python_requires='3.7'
 )
