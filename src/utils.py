@@ -1,5 +1,5 @@
 '''
-Helper functions
+Utility functions
 '''
 
 def describe_tensor(tensor):
