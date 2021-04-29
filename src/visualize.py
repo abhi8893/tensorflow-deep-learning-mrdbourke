@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from .utils import get_dataframe_cols, rmse
 import matplotlib.pyplot as plt
+import tensorflow as tf
 
 
 
@@ -40,10 +41,10 @@ def plot_learning_curve(history_dict, extra_metric=None, include_validation=True
     return fig, axn
 
 
-def plot1d_reg_preds(X: np.array, y: np.array, models, labels):
+def plot1d_reg_preds(X: np.array, y: np.array, models, labels, figsize=(12, 7)):
     '''Models must be callable predict functions'''
     
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=figsize)
     ax.scatter(X, y, s=0.2)
     for model, label in zip(models, labels):
         y_pred = np.squeeze(model(X))
