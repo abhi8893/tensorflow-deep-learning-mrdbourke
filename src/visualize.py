@@ -56,6 +56,38 @@ def plot1d_reg_preds(X: np.array, y: np.array, models, labels, figsize=(12, 7)):
     return fig, ax
 
 
+def plot2d_decision_function(model, X, ax=None):
+    """Plot decision contours for a binary classification model.
+
+    Args:
+        model (callable): Prediction function which outputs probabilities.
+        X (np.array): Input features of shape (None, 2)
+        ax (matplotlib.axes._subplots.AxesSubplot, optional): A matplotlib axes object. Defaults to None.
+    """
+
+
+    x1_range = np.linspace(X[:, 0].min() - 0.1, X[:, 0].max() + 0.1, 100)
+    x2_range = np.linspace(X[:, 1].min() - 0.1, X[:, 1].max() + 0.1, 100)
+
+    xx1, xx2 = np.meshgrid(x1_range, x2_range)
+    X_grid = np.array((xx1.ravel(), xx2.ravel())).T
+    y_grid_pred = model(X_grid)
+
+    if ax is None:
+        fig, ax = plt.subplots()
+
+    color_levels = np.linspace(0, 1, 10).round(1)
+
+    n1, n2 = len(x1_range), len(x2_range)
+    grid = np.concatenate((X_grid, y_grid_pred), axis=1).reshape(n1, n2, 3)
+
+    cp = ax.contourf(grid[:, :, 0], grid[:, :, 1], grid[:, :, 2], 
+                     cmap='RdBu', levels=color_levels)
+
+    return cp
+
+
+
 
         
     
