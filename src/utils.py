@@ -4,6 +4,7 @@ Utility functions
 
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def describe_tensor(tensor):
     '''Describe a tensor (print out useful info)'''
@@ -126,7 +127,7 @@ class LabelAnalyzer:
 
         ax.set_title(title, fontdict=dict(weight='bold', size=15))
         ax.legend(labels=legend_labels, bbox_to_anchor=(1.01, 0.6))
-        plt.xlim(rotation=45)
+        plt.xticks(rotation=45)
         return ax
 
 
