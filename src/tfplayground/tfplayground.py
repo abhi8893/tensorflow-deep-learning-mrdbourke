@@ -1,5 +1,6 @@
 from tensorflow.keras import layers, losses, optimizers, regularizers
-from src.visualize import plot_learning_curve, plot2d_decision_function
+from ..visualize import plot_learning_curve, plot2d_decision_function, plot_confusion_matrix
+from .tfplaydataset import TfPlayDataset
 
 class TensorflowPlayground:
     
@@ -51,7 +52,7 @@ class TensorflowPlayground:
             
     @staticmethod        
     def _make_circle_X_y(noise=0, n_samples=1000, random_state=None):
-        return sklearn.datasets.make_circles(n_samples=n_samples, noise=noise, random_state=random_state)
+        return skdata.make_circles(n_samples=n_samples, noise=noise, random_state=random_state)
 
     
     @staticmethod
@@ -110,5 +111,12 @@ class TensorflowPlayground:
         subset_dict = self.data.train
         cp = plot2d_decision_function(self.predict, subset_dict['data'].values, ax=ax)
         return cp
+    
+    
+    def plot_confusion_matrix(self, subset='test'):
+        subset_dict = self.data.__getattribute__(subset)
+        y_true = subset_dict['label']
+        y_pred = self.predict(subset_dict['data'].values).round()
+        return plot_confusion_matrix(y_true, y_pred)
     
     
