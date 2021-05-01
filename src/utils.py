@@ -31,44 +31,91 @@ def rmse(y_true, y_pred):
 
 
 class LabelAnalyzer:
+
+    """Analyze Labels for classification problem.
+
+        Args:
+            train_labels ([type]): train labels.
+            test_labels ([type], optional): test labels. Defaults to None.
+            class_names ([type], optional): Actual class names or a mapping from class_values to class_labels. Defaults to None.
+    """
     
-    def __init__(self, train_labels, test_labels=None):
+    def __init__(self, train_labels, test_labels=None, class_names=None):
+
+
         self.train = self._get_count_dict(train_labels)
         self.__has_test_data = test_labels is not None
+
+        class_values = self.train['value']
         
         if self.__has_test_data:
             self.test = self._get_count_dict(test_labels)
+            class_values = list(set(class_values + self.test['value']))
+
+
+        if class_names is not None:
+            if isinstance(class_names, (tuple, list, np.ndarray)):
+                assert len(class_names) == len(class_values)
+                class_labels = list(class_names)
+
+            elif isinstance(class_names, dict):
+                assert set(class_names.keys()).intersection(class_values) == set(class_values)
+
+                class_labels = list(class_names.values())
+                class_values = list(class_names.keys())
+
+        else:
+            class_labels = class_values
+
+
+        self.class_labels = class_labels
+        self.class_values = class_values
+        self.labelmap = dict(zip(self.class_values, self.class_labels))
 
         self._make_count_df()
     
     @staticmethod
     def _get_count_dict(labels):
         unique, counts = np.unique(labels, return_counts=True)
-        return dict(zip(['label', 'count'], [list(unique), list(counts)]))
+        unique, counts = list(unique), list(counts)
+
+        return dict(zip(['value', 'count'], [list(unique), list(counts)]))
+
+
         
     def count(self, label, subset='train'):
         d = self.__getattribute__(subset)
-        idx = d['label'].index(label)
+        idx = d['value'].index(label)
         return d['count'][idx]
     
     def _make_count_df(self):
         traindf = pd.DataFrame(self.train)
 
         if not self.__has_test_data:
-            self.countdf = traindf
-            return None
+            countdf = traindf
+        else:
+            testdf = pd.DataFrame(self.test)
+            countdf = pd.merge(traindf, testdf, how='outer', on='value', 
+                            suffixes=('_train', '_test')).fillna(0).sort_values('value')
+            
+            countdf[['count_train', 'count_test']] = countdf[['count_train', 'count_test']].astype('Int64')
+        
+            countdf = countdf
 
-        testdf = pd.DataFrame(self.test)
-        countdf = pd.merge(traindf, testdf, how='outer', on='label', 
-                           suffixes=('_train', '_test')).fillna(0).sort_values('label')
+
+        countdf = countdf.set_index('value').reindex(self.class_values).reset_index().fillna(0)
+        countdf['label'] = countdf['value'].map(self.labelmap)
+
+        first_cols = ['value', 'label']
+        other_cols = list(countdf.columns[~countdf.columns.isin(first_cols)])
         
-        countdf[['count_train', 'count_test']] = countdf[['count_train', 'count_test']].astype('Int64')
-        
-        self.countdf = countdf
+        self.countdf = countdf[first_cols + other_cols]
+
         
         
     def plot(self):
-        ax = self.countdf.plot(x='label', kind='bar', stacked=True, figsize=(12, 4))
+
+        ax = self.countdf.drop('value', axis=1).plot(x='label', kind='bar', stacked=True, figsize=(12, 4))
 
         if self.__has_test_data:
             title = 'Train vs Test label distribution'
@@ -79,6 +126,7 @@ class LabelAnalyzer:
 
         ax.set_title(title, fontdict=dict(weight='bold', size=15))
         ax.legend(labels=legend_labels, bbox_to_anchor=(1.01, 0.6))
+        plt.xlim(rotation=45)
         return ax
 
 
