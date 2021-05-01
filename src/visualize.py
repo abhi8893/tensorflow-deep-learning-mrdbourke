@@ -3,6 +3,8 @@ import numpy as np
 from .utils import get_dataframe_cols, rmse
 import matplotlib.pyplot as plt
 import tensorflow as tf
+from sklearn.metrics import confusion_matrix
+import itertools
 
 
 
@@ -85,6 +87,59 @@ def plot2d_decision_function(model, X, ax=None):
                      cmap='RdBu', levels=color_levels)
 
     return cp
+
+
+def plot_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_size=15):
+
+    ''' Plot confusion matrix'''
+
+    cm = confusion_matrix(y_true, y_pred.round())
+    cm_norm = cm.astype(float)/cm.sum(axis=1)[:, np.newaxis]
+    n_classes = cm.shape[0]
+
+    # Figure and axes
+    fig, ax = plt.subplots(figsize=figsize)
+    cax = ax.matshow(cm_norm, cmap=plt.cm.Blues, vmin=0, vmax=1)
+    # Add colorbar
+    cbar = fig.colorbar(cax)
+
+    # Class labels
+    if classes:
+        labels = classes
+    else:
+        labels = np.arange(cm.shape[0], dtype=int)
+
+    # Label the axes
+    ax.set(
+        title='Confusion matrix',
+        xlabel='Predicted label',
+        ylabel='True label',
+        xticks=np.arange(n_classes),
+        yticks=np.arange(n_classes),
+        xticklabels=labels,
+        yticklabels=labels
+    );
+
+
+    # Set x-axis labels to bottom
+    ax.xaxis.set_label_position('bottom')
+    ax.xaxis.tick_bottom()
+
+    # Adjust label size
+    ax.xaxis.label.set_size(20)
+    ax.yaxis.label.set_size(20)
+
+
+    for i, j in itertools.product(range(n_classes), range(n_classes)):
+        val = cm[i, j]
+        perc = cm_norm[i, j]*100
+
+        ax.text(j, i, f'{val} ({perc: .1f})%',
+                ha='center', va='center', size=text_size, 
+                color='white' if perc > 50 else 'black')
+        
+        
+    return cax
 
 
 
