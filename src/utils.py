@@ -51,7 +51,7 @@ class LabelAnalyzer:
         
         if self.__has_test_data:
             self.test = self._get_count_dict(test_labels)
-            class_values = list(set(class_values + self.test['value']))
+            class_values = tuple(set(class_values + self.test['value']))
 
         else:
             self.test = None
@@ -60,13 +60,13 @@ class LabelAnalyzer:
         if class_names is not None:
             if isinstance(class_names, (tuple, list, np.ndarray)):
                 assert len(class_names) == len(class_values)
-                class_labels = list(class_names)
+                class_labels = tuple(class_names)
 
             elif isinstance(class_names, dict):
                 assert set(class_names.keys()).intersection(class_values) == set(class_values)
 
-                class_labels = list(class_names.values())
-                class_values = list(class_names.keys())
+                class_labels = tuple(class_names.values())
+                class_values = tuple(class_names.keys())
 
         else:
             class_labels = class_values
@@ -83,9 +83,9 @@ class LabelAnalyzer:
     @staticmethod
     def _get_count_dict(labels):
         unique, counts = np.unique(labels, return_counts=True)
-        unique, counts = list(unique), list(counts)
+        unique, counts = tuple(unique), tuple(counts)
 
-        return dict(zip(['value', 'count'], [list(unique), list(counts)]))
+        return dict(zip(['value', 'count'], [unique, counts]))
 
 
         
