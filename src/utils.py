@@ -5,6 +5,8 @@ Utility functions
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import tensorflow as tf
+from tempfile import TemporaryFile
 
 def describe_tensor(tensor):
     '''Describe a tensor (print out useful info)'''
@@ -137,9 +139,21 @@ class LabelAnalyzer:
         return ax
 
 
-    
-            
+def plot_keras_model(model, to_file=None, show_shapes=False, 
+                     show_dtype=False, show_layer_names=True, rankdir='TB', 
+                     expand_nested=False, dpi=96):
+    if to_file is None:
+        t = TemporaryFile(suffix='.png')
+        t.close()
+        fname = t.name
+    else:
+        fname = to_file
         
     
+    return tf.keras.utils.plot_model(model, to_file=fname, show_shapes=show_shapes, 
+                                     show_dtype=show_dtype, show_layer_names=show_layer_names, 
+                                     rankdir=rankdir, 
+                                     expand_nested=expand_nested, dpi=dpi)
+                                     
             
         
