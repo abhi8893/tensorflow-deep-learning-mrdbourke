@@ -74,7 +74,9 @@ class LabelAnalyzer:
 
         self.class_labels = class_labels
         self.class_values = class_values
-        self.labelmap = dict(zip(self.class_values, self.class_labels))
+        self.val2lab = dict(zip(self.class_values, self.class_labels))
+        self.lab2val = {lab: val for val, lab in self.val2lab.items()}
+    
 
         self._make_count_df()
     
@@ -108,7 +110,7 @@ class LabelAnalyzer:
 
 
         countdf = countdf.set_index('value').reindex(self.class_values).reset_index().fillna(0)
-        countdf['label'] = countdf['value'].map(self.labelmap)
+        countdf['label'] = countdf['value'].map(self.val2lab)
 
         first_cols = ['value', 'label']
         other_cols = list(countdf.columns[~countdf.columns.isin(first_cols)])
