@@ -53,6 +53,9 @@ class LabelAnalyzer:
             self.test = self._get_count_dict(test_labels)
             class_values = list(set(class_values + self.test['value']))
 
+        else:
+            self.test = None
+
 
         if class_names is not None:
             if isinstance(class_names, (tuple, list, np.ndarray)):
