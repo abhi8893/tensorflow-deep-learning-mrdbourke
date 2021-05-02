@@ -74,6 +74,7 @@ class LabelAnalyzer:
 
         self.class_labels = class_labels
         self.class_values = class_values
+        self.n_classes = len(self.class_labels)
         self.val2lab = dict(zip(self.class_values, self.class_labels))
         self.lab2val = {lab: val for val, lab in self.val2lab.items()}
     
