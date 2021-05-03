@@ -16,7 +16,7 @@ def plot_learning_curve(history_dict, extra_metric=None, include_validation=True
         fig, axn = plt.subplots(1, 1)
         axn = np.array([axn])
     else:
-        fig, axn = plt.subplots(2, 1, figsize=(8, 12))
+        fig, axn = plt.subplots(1, 2, figsize=(12, 3))
         
     
     history_df = pd.DataFrame(history_dict)
