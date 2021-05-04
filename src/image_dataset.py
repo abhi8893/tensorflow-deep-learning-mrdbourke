@@ -14,9 +14,11 @@ class ImageDataset:
         self.__has_test_data = test_data is not None
         
         if test_data is None:
-            test_data = (None, None)
-            
-        self.test_images, self.test_labels = [x.copy() for x in test_data]
+            self.test_images, self.test_labels = (None, None)
+        else:
+            self.test_images, self.test_labels = [x.copy() for x in test_data]
+
+        
         la = LabelAnalyzer(self.train_labels, self.test_labels, classes)
         self.__set_attrs_from_labelanalyzer(la)
         
