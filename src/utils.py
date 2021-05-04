@@ -40,45 +40,46 @@ class LabelAnalyzer:
         Args:
             train_labels ([type]): train labels.
             test_labels ([type], optional): test labels. Defaults to None.
-            class_names ([type], optional): Actual class names or a mapping from class_values to class_labels. Defaults to None.
+            classes ([type], optional): Actual class names or a mapping from class_labels to class_names. 
+                                        Defaults to None.
     """
     
-    def __init__(self, train_labels, test_labels=None, class_names=None):
+    def __init__(self, train_labels, test_labels=None, classes=None):
 
 
         self.train = self._get_count_dict(train_labels)
         self.__has_test_data = test_labels is not None
 
-        class_values = self.train['value']
+        class_labels = self.train['label']
         
         if self.__has_test_data:
             self.test = self._get_count_dict(test_labels)
-            class_values = tuple(set(class_values + self.test['value']))
+            class_labels = tuple(set(class_labels + self.test['label']))
 
         else:
             self.test = None
 
 
-        if class_names is not None:
-            if isinstance(class_names, (tuple, list, np.ndarray)):
-                assert len(class_names) == len(class_values)
-                class_labels = tuple(class_names)
+        if classes is not None:
+            if isinstance(classes, (tuple, list, np.ndarray)):
+                assert len(classes) == len(class_labels)
+                class_names = tuple(classes)
 
-            elif isinstance(class_names, dict):
-                assert set(class_names.keys()).intersection(class_values) == set(class_values)
+            elif isinstance(classes, dict):
+                assert set(classes.keys()).intersection(class_labels) == set(class_labels)
 
-                class_labels = tuple(class_names.values())
-                class_values = tuple(class_names.keys())
+                class_labels = tuple(classes.keys())
+                class_names = tuple(classes.values())
 
         else:
-            class_labels = class_values
+            class_names = class_labels
 
 
+        self.class_names = class_names
         self.class_labels = class_labels
-        self.class_values = class_values
         self.n_classes = len(self.class_labels)
-        self.val2lab = dict(zip(self.class_values, self.class_labels))
-        self.lab2val = {lab: val for val, lab in self.val2lab.items()}
+        self.lab2nm = dict(zip(self.class_labels, self.class_names))
+        self.nm2lab = {nm: lab for lab, nm in self.lab2nm.items()}
     
 
         self._make_count_df()
@@ -88,13 +89,14 @@ class LabelAnalyzer:
         unique, counts = np.unique(labels, return_counts=True)
         unique, counts = tuple(unique), tuple(counts)
 
-        return dict(zip(['value', 'count'], [unique, counts]))
+        return dict(zip(['label', 'count'], [unique, counts]))
 
 
         
-    def count(self, label, subset='train'):
+    def count(self, class_name, subset='train'):
         d = self.__getattribute__(subset)
-        idx = d['value'].index(label)
+
+        idx = d['label'].index(self.nm2lab[class_name])
         return d['count'][idx]
     
     def _make_count_df(self):
@@ -104,18 +106,18 @@ class LabelAnalyzer:
             countdf = traindf
         else:
             testdf = pd.DataFrame(self.test)
-            countdf = pd.merge(traindf, testdf, how='outer', on='value', 
-                            suffixes=('_train', '_test')).fillna(0).sort_values('value')
+            countdf = pd.merge(traindf, testdf, how='outer', on='label', 
+                            suffixes=('_train', '_test')).fillna(0).sort_values('label')
             
             countdf[['count_train', 'count_test']] = countdf[['count_train', 'count_test']].astype('Int64')
         
             countdf = countdf
 
 
-        countdf = countdf.set_index('value').reindex(self.class_values).reset_index().fillna(0)
-        countdf['label'] = countdf['value'].map(self.val2lab)
+        countdf = countdf.set_index('label').reindex(self.class_labels).reset_index().fillna(0)
+        countdf['name'] = countdf['label'].map(self.lab2nm)
 
-        first_cols = ['value', 'label']
+        first_cols = ['label', 'name']
         other_cols = list(countdf.columns[~countdf.columns.isin(first_cols)])
         
         self.countdf = countdf[first_cols + other_cols]
@@ -124,7 +126,7 @@ class LabelAnalyzer:
         
     def plot(self):
 
-        ax = self.countdf.drop('value', axis=1).plot(x='label', kind='bar', stacked=True, figsize=(12, 4))
+        ax = self.countdf.drop('label', axis=1).plot(x='name', kind='bar', stacked=True, figsize=(12, 4))
 
         if self.__has_test_data:
             title = 'Train vs Test label distribution'
