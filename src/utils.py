@@ -46,20 +46,35 @@ class LabelAnalyzer:
     
     def __init__(self, train_labels, test_labels=None, classes=None):
 
+        train_dict = self._get_count_dict(train_labels)
+        if test_labels is not None:
+            test_dict = self._get_count_dict(test_labels)
+        else:
+            test_dict = {}
 
-        self.train = self._get_count_dict(train_labels)
-        self.__has_test_data = test_labels is not None
+        self.__from_countdict_process(train_dict, test_dict, classes)
+        self._make_count_df()
+
+    @classmethod
+    def from_countdict(cls, train_dict, test_dict, classes=None):
+        obj = cls.__new__(cls)
+        obj.__from_countdict_process(train_dict, test_dict, classes)
+        return obj
+
+
+    def __from_countdict_process(self, train_dict, test_dict=None, classes=None):
+
+        self.train = train_dict
+        self.__has_test_data = bool(test_dict)
 
         class_labels = self.train['label']
-        
+
         if self.__has_test_data:
-            self.test = self._get_count_dict(test_labels)
+            self.test = test_dict
             class_labels = tuple(set(class_labels + self.test['label']))
-
         else:
-            self.test = None
-
-
+            self.test = {}
+        
         if classes is not None:
             if isinstance(classes, (tuple, list, np.ndarray)):
                 assert len(classes) == len(class_labels)
@@ -83,12 +98,14 @@ class LabelAnalyzer:
     
 
         self._make_count_df()
+
+
+
     
     @staticmethod
     def _get_count_dict(labels):
         unique, counts = np.unique(labels, return_counts=True)
         unique, counts = tuple(unique), tuple(counts)
-
         return dict(zip(['label', 'count'], [unique, counts]))
 
 
