@@ -121,8 +121,12 @@ class ImageDataset:
             if not kwarg_dict.get(f'{subset}_data'):
                 subset_labels = self.__getattribute__(f'{subset}_labels')
                 subset_images = self.__getattribute__(f'{subset}_images')
-                kwarg_dict[f'{subset}_data'] = (subset_images, subset_labels)
-        
+                
+                if (subset_labels is None) and (subset_images is None):
+                    kwarg_dict[f'{subset}_data'] = None
+                else:
+                    kwarg_dict[f'{subset}_data'] = (subset_images, subset_labels)
+     
         imgds = self.__class__(**kwarg_dict)
         
         return imgds
