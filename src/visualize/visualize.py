@@ -1,11 +1,12 @@
 import pandas as pd
 import numpy as np
-from .utils import get_dataframe_cols, rmse
+from ..utils import get_dataframe_cols
+from ..evaluate import rmse
 import matplotlib.pyplot as plt
 import tensorflow as tf
 from sklearn.metrics import confusion_matrix
 import itertools
-
+from tempfile import TemporaryFile
 
 
 # TODO: Support for `extra_metrics` as a list
@@ -140,6 +141,24 @@ def plot_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_s
         
         
     return cax
+
+
+
+def plot_keras_model(model, to_file=None, show_shapes=False, 
+                     show_dtype=False, show_layer_names=True, rankdir='TB', 
+                     expand_nested=False, dpi=96):
+    if to_file is None:
+        t = TemporaryFile(suffix='.png')
+        t.close()
+        fname = t.name
+    else:
+        fname = to_file
+        
+    
+    return tf.keras.utils.plot_model(model, to_file=fname, show_shapes=show_shapes, 
+                                     show_dtype=show_dtype, show_layer_names=show_layer_names, 
+                                     rankdir=rankdir, 
+                                     expand_nested=expand_nested, dpi=dpi)
 
 
 

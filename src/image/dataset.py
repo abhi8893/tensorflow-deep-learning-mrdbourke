@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
-from .utils import LabelAnalyzer
+from ..utils import LabelAnalyzer
 import pandas as pd
 import tensorflow as tf
 import numpy as np
@@ -121,8 +121,12 @@ class ImageDataset:
             if not kwarg_dict.get(f'{subset}_data'):
                 subset_labels = self.__getattribute__(f'{subset}_labels')
                 subset_images = self.__getattribute__(f'{subset}_images')
-                kwarg_dict[f'{subset}_data'] = (subset_images, subset_labels)
-        
+
+                if (subset_labels is None) and (subset_images is None):
+                    kwarg_dict[f'{subset}_data'] = None
+                else:
+                    kwarg_dict[f'{subset}_data'] = (subset_images, subset_labels)
+     
         imgds = self.__class__(**kwarg_dict)
         
         return imgds
@@ -135,4 +139,21 @@ class ImageDataset:
     def get_one_hot_labels(self, subset):
         subset_labels = self.__getattribute__(f'{subset}_labels')
         return tf.keras.utils.to_categorical(subset_labels, num_classes=self.n_classes)
+
+
+    def __getitem__(self, idx):
+
+        if isinstance(idx, int):
+            idx = slice(idx, idx+1)
+
+        train_data = (self.train_images[idx], self.train_labels[idx])
+        if self.__has_test_data:
+            test_data = (self.test_images[idx], self.test_labels[idx])
+        else:
+            test_data = None
+
+
+        imgds = self.__class__(train_data, test_data, classes=self.lab2nm)
+
+        return imgds
         
