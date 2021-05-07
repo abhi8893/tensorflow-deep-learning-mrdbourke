@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
-from .utils import LabelAnalyzer
+from ..utils import LabelAnalyzer
 import pandas as pd
 import tensorflow as tf
 import numpy as np

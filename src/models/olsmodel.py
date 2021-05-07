@@ -1,6 +1,7 @@
 '''
 OLS Regression model
 '''
+import numpy as np
 
 class OLSRegressor:
     
