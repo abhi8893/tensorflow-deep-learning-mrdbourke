@@ -1,9 +1,6 @@
 from tensorflow.keras import layers, losses, optimizers, regularizers
 from ..visualize import plot_learning_curve, plot2d_decision_function, plot_confusion_matrix
 from .tfplaydataset import TfPlayDataset
-import sklearn.datasets as skdata
-import tensorflow as tf
-
 
 class TensorflowPlayground:
     

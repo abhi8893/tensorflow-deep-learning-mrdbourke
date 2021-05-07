@@ -1,6 +1,37 @@
+'''
+Utility functions
+'''
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import tensorflow as tf
+from tempfile import TemporaryFile
+
+def describe_tensor(tensor):
+    '''Describe a tensor (print out useful info)'''
+    
+    print('Datatype:', tensor.dtype)
+    print('Number of dimensions:', tensor.ndim)
+    print('Shape of tensor:', tensor.shape)
+    print('Elements along the 0 axis:',tensor.shape[0])
+    print('Elements along the last axis:', tensor.shape[-1])
+    print('Total number of elements:', tf.size(tensor).numpy())
+
+
+
+def get_dataframe_cols(df, cols):
+    '''Get dataframe columns which are present in the pandas dataframe'''
+    
+    cols = df.columns[df.columns.isin(cols)]
+    
+    return df[cols]
+
+
+def rmse(y_true, y_pred):
+    return np.sqrt(np.mean((y_true - y_pred)**2))
+
+
 
 class LabelAnalyzer:
 
@@ -125,3 +156,23 @@ class LabelAnalyzer:
         ax.legend(labels=legend_labels, bbox_to_anchor=(1.01, 0.6))
         plt.xticks(rotation=45)
         return ax
+
+
+def plot_keras_model(model, to_file=None, show_shapes=False, 
+                     show_dtype=False, show_layer_names=True, rankdir='TB', 
+                     expand_nested=False, dpi=96):
+    if to_file is None:
+        t = TemporaryFile(suffix='.png')
+        t.close()
+        fname = t.name
+    else:
+        fname = to_file
+        
+    
+    return tf.keras.utils.plot_model(model, to_file=fname, show_shapes=show_shapes, 
+                                     show_dtype=show_dtype, show_layer_names=show_layer_names, 
+                                     rankdir=rankdir, 
+                                     expand_nested=expand_nested, dpi=dpi)
+                                     
+            
+        

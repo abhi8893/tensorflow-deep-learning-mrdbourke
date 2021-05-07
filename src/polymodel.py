@@ -2,7 +2,6 @@
 Polynomial model class
 '''
 import numpy as np
-import matplotlib.pyplot as plt
 
 class PolynomialModel:
     
@@ -25,7 +24,7 @@ class PolynomialModel:
         for i, p in enumerate(self.params):
             val += (X**i)*p
             
-        val = np.sum(val, axis=1)
+        val = val.sum(axis=1)
             
         if add_noise:
             val += self._sample_normal_noise(self.stderr, shape=(val.shape[0],))
