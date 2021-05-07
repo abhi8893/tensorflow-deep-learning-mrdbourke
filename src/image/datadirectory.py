@@ -2,8 +2,8 @@ import os
 import glob
 import pandas as pd
 import numpy as np
-from src.utils import LabelAnalyzer
-from . import ImageDataset
+from ..utils import LabelAnalyzer
+from .dataset import ImageDataset
 import tensorflow as tf
 from sklearn.preprocessing import LabelEncoder
 import math
