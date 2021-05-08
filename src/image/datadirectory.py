@@ -59,7 +59,7 @@ class ClassicImageDataDirectory:
         cls_size_prop = {nm: size/total_size for nm, size in cls_size.items()}
         cls_batch_size = {nm: int(batch_size*prop) for nm, prop in cls_size_prop.items()}
         
-        total_batches = math.floor(total_size/batch_size + 1)
+        total_batches = math.floor(total_size/batch_size) + 1
         
         for batch_num in range(total_batches):
             batch_files = []
