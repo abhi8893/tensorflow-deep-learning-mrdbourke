@@ -56,8 +56,10 @@ class ImageDataset:
         
         if cmap == 'auto':
             subset_dim = len(subset_images[0, :].shape)
-            if (subset_dim == 2) or (subset_dim == 3 and subset_dim[-1] == 1): 
+            if (subset_dim == 2) or (subset_dim == 3 and subset_images.shape[-1] == 1): 
                 cmap = plt.cm.binary
+            else:
+                cmap = None
         
         
         if class_names == 'any':
