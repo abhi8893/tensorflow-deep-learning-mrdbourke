@@ -7,6 +7,7 @@ from .dataset import ImageDataset
 import tensorflow as tf
 from sklearn.preprocessing import LabelEncoder
 import math
+from collections import Counter
 
 class ClassicImageDataDirectory:
     
@@ -57,7 +58,9 @@ class ClassicImageDataDirectory:
         cls_size = {nm: len(files) for nm, files in all_files.items()}
         total_size = sum(cls_size.values())
         cls_size_prop = {nm: size/total_size for nm, size in cls_size.items()}
-        cls_batch_size = {nm: int(batch_size*prop) for nm, prop in cls_size_prop.items()}
+        cls_batch_size = Counter(np.random.choice(self.class_names, size=batch_size, 
+                                p=[cls_size_prop[nm] for nm in self.class_names]))
+
         
         total_batches = math.floor(total_size/batch_size) + 1
         
