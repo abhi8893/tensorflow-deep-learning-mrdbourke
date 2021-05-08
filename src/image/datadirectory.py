@@ -11,7 +11,7 @@ from collections import Counter
 
 class ClassicImageDataDirectory:
     
-    def __init__(self, data_dir, target_image_size):
+    def __init__(self, data_dir, target_image_size, dtype=np.float32):
         self._verify_train_test_structure(data_dir)
         
         self.data_dir = data_dir
@@ -37,11 +37,16 @@ class ClassicImageDataDirectory:
         
         la = LabelAnalyzer.from_countdict(train_dict, test_dict, class_names)
         ImageDataset._ImageDataset__set_attrs_from_labelanalyzer(self, la)
+
+        self.dtype = dtype
                 
         
-    def load(self, batch_size=32, subset='train', class_names='all'):
+    def load(self, batch_size=32, subset='train', class_names='all', dtype=None):
         if class_names == 'all':
             class_names = self.class_names
+
+        if dtype is None:
+            dtype = self.dtype
             
         subset_dir = os.path.join(self.__getattribute__(subset)['dir'])
         
@@ -79,18 +84,18 @@ class ClassicImageDataDirectory:
                 batch_files += [os.path.join(subset_dir, cls_name, f) for f in files[start:end]]
                 batch_labels += [cls_name]*(len(files[start:end]))
                 
-            batch_images = np.array([self._load_and_resize_image(file, target_size=self.target_image_size)
+            batch_images = np.array([self._load_and_resize_image(file, target_size=self.target_image_size, dtype=dtype)
                                      for file in batch_files])
             
             batch_labels = self.labelencoder.transform(batch_labels)
                 
             yield ImageDataset((batch_images, batch_labels), classes=self.lab2nm)
-            
+
 
     @staticmethod    
-    def _load_and_resize_image(file, target_size):
+    def _load_and_resize_image(file, target_size, dtype):
         img = tf.keras.preprocessing.image.load_img(file, target_size=target_size)
-        img = tf.keras.preprocessing.image.img_to_array(img)
+        img = tf.keras.preprocessing.image.img_to_array(img, dtype=dtype)
         return img
         
     
