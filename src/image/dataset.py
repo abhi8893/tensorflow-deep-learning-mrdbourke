@@ -26,6 +26,10 @@ class ImageDataset:
         
         if self.__has_test_data:
             self.test_size, *self.test_dim = self.test_images.shape
+
+
+    def __len__(self):
+        return len(self.train_images)
     
     def __set_attrs_from_labelanalyzer(self, la):
         self.class_labels = la.class_labels
