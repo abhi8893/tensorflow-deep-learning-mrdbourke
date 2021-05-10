@@ -10,8 +10,17 @@ from tempfile import TemporaryFile
 
 
 # TODO: Support for `extra_metrics` as a list
-def plot_learning_curve(history_dict, extra_metric=None, include_validation=True):
+def plot_learning_curve(model_or_history, extra_metric=None, include_validation=True):
     '''Plots the loss and the extra metric curve for train and val set'''
+
+    if isinstance(model_or_history, (tf.keras.models.Sequential, tf.keras.models.Model)):
+        history_dict = model_or_history.history.history
+
+    elif isinstance(model_or_history, tf.keras.callbacks.History):
+        history_dict = model_or_history.history
+    
+    elif isinstance(model_or_history, dict):
+        history_dict = model_or_history
     
     if extra_metric is None:
         fig, axn = plt.subplots(1, 1)
