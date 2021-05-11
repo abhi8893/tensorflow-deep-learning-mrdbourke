@@ -20,7 +20,7 @@ class ClassicImageDataDirectory:
         self.train = self.__get_subset_info('train')
         self.test = self.__get_subset_info('test')
         
-        class_names = list(set(self.train['name'] + self.test['name']))
+        class_names = sorted(list(set(self.train['name'] + self.test['name'])))
         self.labelencoder = LabelEncoder()
         self.labelencoder.fit(class_names)
         
