@@ -56,10 +56,10 @@ class ClassicImageDataDirectory:
             all_files[nm] = []
             try:
                 all_files[nm] +=  self.list_data_files(subset, nm)
+                np.random.shuffle(all_files[nm])
             except FileNotFoundError:
                 pass
-            
-            
+       
         cls_size = {nm: len(files) for nm, files in all_files.items()}
         total_size = sum(cls_size.values())
         cls_size_prop = {nm: size/total_size for nm, size in cls_size.items()}
