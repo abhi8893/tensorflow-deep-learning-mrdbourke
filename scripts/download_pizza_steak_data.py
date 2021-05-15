@@ -2,7 +2,6 @@ import wget
 import zipfile
 import os
 import shutil
-import sys
 
 DATA_URL = r'https://storage.googleapis.com/ztm_tf_course/food_vision/pizza_steak.zip'
 OUT_FILE = r'data/pizza_steak.zip'
