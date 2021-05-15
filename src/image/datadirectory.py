@@ -2,6 +2,7 @@ import os
 import glob
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from ..utils import LabelAnalyzer
 from .dataset import ImageDataset
 import tensorflow as tf
@@ -120,3 +121,34 @@ class ClassicImageDataDirectory:
         d['count'] = [len(self.list_data_files(subset, nm)) for nm in d['name']]
         
         return d
+
+
+    def view_random_prediction(self, model, subset, datagen, binary_prob_thresh=0.5):
+        imgen = self.load(1, subset=subset)
+        batch = next(imgen)
+        
+        img, cls_lab = datagen.flow(batch.train_images, batch.train_labels).next()
+        
+        cls_lab = int(cls_lab)
+        pred_probs = np.squeeze(model.predict(img))
+
+        if pred_probs.size > 1:
+            pred_lab = pred_probs.argmax()
+        else:
+            pred_lab = (pred_probs > binary_prob_thresh).astype(np.uint8)
+                
+        cls_name, pred_name = self.class_names[cls_lab], self.class_names[pred_lab]
+        
+        fig, ax = plt.subplots()
+        ax.imshow(np.squeeze(img))
+        ax.set_xlabel(cls_name, fontdict=dict(weight='bold', size=20))
+        ax.set_xticks([])
+        ax.set_yticks([])
+
+        if cls_lab == pred_lab:
+            color = 'green'
+        else:
+            color = 'red'
+
+        ax.set_title(pred_name + f'({pred_probs.max():.2f})', fontdict=dict(weight='bold', size=20), color=color)
+        return ax    
