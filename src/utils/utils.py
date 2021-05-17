@@ -2,6 +2,8 @@
 Utility functions
 '''
 import tensorflow as tf
+import os
+import datetime
 
 
 def describe_tensor(tensor):
@@ -36,6 +38,12 @@ def check_tfmodel_weights_equality(model1, model2):
         if not res:
             return False 
     return True
+
+def create_tensorboard_callback(experiment, task, parent_dir):
+    log_dir = os.path.join(parent_dir, task, experiment, datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
+    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir)
+    print(f'Saving TensorBoard log files to " {log_dir}"')
+    return tensorboard_callback
 
                                      
             
