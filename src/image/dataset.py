@@ -62,9 +62,9 @@ class ImageDataset:
                 cmap = None
         
         
-        if class_names == 'any':
+        if class_names is 'any':
             class_names = [np.random.choice(self.class_names)]
-        elif class_names == 'all':
+        elif class_names is 'all':
             class_names = self.class_names
         
         n_classes = len(class_names)
