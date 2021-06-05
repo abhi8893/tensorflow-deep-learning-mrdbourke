@@ -39,7 +39,14 @@ def check_tfmodel_weights_equality(model1, model2):
             return False 
     return True
 
-def create_tensorboard_callback(experiment, task, parent_dir):
+def create_tensorboard_callback(experiment, task=None, parent_dir=None):
+
+    if task is None:
+        task = ''
+    
+    if parent_dir is None:
+        parent_dir = ''
+    
     log_dir = os.path.join(parent_dir, task, experiment, datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir)
     print(f'Saving TensorBoard log files to " {log_dir}"')
