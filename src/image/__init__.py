@@ -1,1 +1,2 @@
 from .datadirectory import ClassicImageDataDirectory, ImageDataset
+from .img_clf_exp import ImageClassificationExperiment
