@@ -140,7 +140,7 @@ class ClassicImageDataDirectory:
         cls_name, pred_name = self.class_names[cls_lab], self.class_names[pred_lab]
         
         fig, ax = plt.subplots()
-        ax.imshow(np.squeeze(img))
+        ax.imshow(np.squeeze(batch.train_images))
         ax.set_xlabel(cls_name, fontdict=dict(weight='bold', size=20))
         ax.set_xticks([])
         ax.set_yticks([])
