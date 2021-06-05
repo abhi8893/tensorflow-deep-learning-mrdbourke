@@ -4,6 +4,7 @@ Utility functions
 import tensorflow as tf
 import os
 import datetime
+from pathlib import Path
 
 
 def describe_tensor(tensor):
@@ -48,7 +49,8 @@ def create_tensorboard_callback(experiment, task=None, parent_dir=None):
         parent_dir = ''
     
     log_dir = os.path.join(parent_dir, task, experiment, datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
-    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir)
+    Path(log_dir).mkdir(parents=True, exist_ok=True)
+    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=os.path.abspath(log_dir), profile_batch=0)
     print(f'Saving TensorBoard log files to " {log_dir}"')
     return tensorboard_callback
 
