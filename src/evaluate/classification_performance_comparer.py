@@ -35,16 +35,18 @@ class ClassificationPerformanceComparer:
             y_pred_prob = model.predict(data[0])
             y = data[1]
             
-        return y, y_pred_prob.argmax(axis=1)
+        return y, y_pred_prob.argmax(axis=1), y_pred_prob.max(axis=1)
             
     def calculate_metric_comparison_df(self):
 
         self.predictions = {}
+        self.prediction_probs = {}
         
         compdf = []
         for name, model in self.models.items():
-            y, y_pred = self._get_prediction_from_data(model, self.data)
+            y, y_pred, y_pred_prob = self._get_prediction_from_data(model, self.data)
             self.predictions[name] = y_pred
+            self.prediction_probs[name] = y_pred_prob
             crdf = pd.DataFrame(skmetrics.classification_report(y, y_pred, target_names=self.class_names, output_dict=True))
             crdf['model'] = name
             compdf.append(crdf)
