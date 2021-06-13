@@ -1,7 +1,10 @@
 from setuptools import setup, find_packages
 
-with open('requirements.txt', 'r') as f:
-    requirements = f.readlines()
+# with open('requirements.txt', 'r') as f:
+#     requirements = f.readlines()
+
+requirements = []
+
 
 
 setup(
@@ -11,5 +14,5 @@ setup(
     version='0.0.1',
     packages=find_packages(include=['src', 'src.*']),
     install_requires=requirements,
-    python_requires='==3.7.*'
+    python_requires='>=3.6.*'
 )
