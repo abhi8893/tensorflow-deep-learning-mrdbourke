@@ -1,4 +1,3 @@
-from scripts.download_10_food_classes_all_data import DATA_URL, OUT_FILE
 import wget
 import zipfile
 import os
