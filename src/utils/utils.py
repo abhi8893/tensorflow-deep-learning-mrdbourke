@@ -2,6 +2,7 @@
 Utility functions
 '''
 import tensorflow as tf
+import pandas as pd
 import os
 import datetime
 from pathlib import Path
@@ -53,7 +54,15 @@ def create_tensorboard_callback(experiment, task=None, parent_dir=None):
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=os.path.abspath(log_dir), profile_batch=0)
     print(f'Saving TensorBoard log files to " {log_dir}"')
     return tensorboard_callback
+    
 
+def get_series_group_counts(ser):
+    counts = ser.value_counts()
+    counts_perc = counts/ser.dropna().shape[0]
+    count_df = pd.concat([counts, counts_perc], axis=1)
+    count_df.columns = ['count', 'prop']
+    
+    return count_df
                                      
             
         
