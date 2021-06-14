@@ -1,6 +1,7 @@
-tensorflow==2.4.0
-numpy==1.19
+tensorflow
+numpy==1.19.5
 sklearn
 pandas
 seaborn
-wget
+matplotlib
+wget # extra-hpx360
