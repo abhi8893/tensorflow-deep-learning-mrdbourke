@@ -30,24 +30,39 @@ class ClassificationPerformanceComparer:
     def _get_prediction_from_data(model, data):    
         if isinstance(data, tf.keras.preprocessing.image.DirectoryIterator):
             y_pred_prob = model.predict(data)
-            y = data.labels
         elif isinstance(data, (tuple, list)):
             y_pred_prob = model.predict(data[0])
-            y = data[1]
             
-        return y, y_pred_prob.argmax(axis=1), y_pred_prob.max(axis=1)
-            
-    def calculate_metric_comparison_df(self):
+        return y_pred_prob.argmax(axis=1), y_pred_prob.max(axis=1)
+
+    @staticmethod
+    def _get_true_labels_from_data(data):
+        if isinstance(data, tf.keras.preprocessing.image.DirectoryIterator):
+            return data.labels
+        elif isinstance(data, (tuple, list)):
+            return data[1]
+
+
+    def calculate_predictions(self):
 
         self.predictions = {}
         self.prediction_probs = {}
+        self.true_labels = self._get_true_labels_from_data(self.data)
+
+        for name, model in self.models.items():
+            y_pred, y_pred_prob = self._get_prediction_from_data(model, self.data)
+            self.predictions[name] = y_pred
+            self.prediction_probs[name] = y_pred_prob
+
+            
+    def calculate_metric_comparison_df(self):
         
         compdf = []
         for name, model in self.models.items():
-            y, y_pred, y_pred_prob = self._get_prediction_from_data(model, self.data)
-            self.predictions[name] = y_pred
-            self.prediction_probs[name] = y_pred_prob
-            crdf = pd.DataFrame(skmetrics.classification_report(y, y_pred, target_names=self.class_names, output_dict=True))
+            crdf = pd.DataFrame(skmetrics.classification_report(
+                self.true_labels, self.predictions[name], 
+                target_names=self.class_names, output_dict=True))
+                
             crdf['model'] = name
             compdf.append(crdf)
             
