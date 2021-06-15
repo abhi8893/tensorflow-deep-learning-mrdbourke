@@ -8,10 +8,16 @@ class ClassificationPerformanceComparer:
     
     MODEL_NON_UNIQUE_MSG = 'The model names are not unique! Please make model names unique or provide a dictionary of models'
     
-    def __init__(self, models, data, class_names=None):
+    def __init__(self, models, data, class_names=None, model_names=None):
+
+
+        if model_names is None:
+            self.model_names = [f'model_{i+1}' for i in range(len(models))]
+        else:
+            self.model_names = model_names
         
         if isinstance(models, (tuple, list)):
-            self.models = {model.name: model for model in models}
+            self.models = dict(zip(self.model_names, models))
             
             # TODO: which model name is duplicated? Show in message.
             assert len(self.models) == len(models), self.MODEL_NON_UNIQUE_MSG
@@ -25,6 +31,19 @@ class ClassificationPerformanceComparer:
             self.class_names = class_names
             
         self.data = data
+        self.true_labels = self._get_true_labels_from_data(self.data)
+
+
+    @classmethod
+    def from_predictions(cls, predictions, data, model_names=None, class_names=None):
+
+        n_models = len(predictions)
+        models = [None for _ in range(n_models)] # Since we don't have models
+
+        clf_comp = cls(models, data, class_names=class_names, model_names=model_names)
+        clf_comp.predictions = dict(zip(clf_comp.model_names, predictions))
+
+        return clf_comp
         
     @staticmethod
     def _get_prediction_from_data(model, data):    
@@ -47,7 +66,6 @@ class ClassificationPerformanceComparer:
 
         self.predictions = {}
         self.prediction_probs = {}
-        self.true_labels = self._get_true_labels_from_data(self.data)
 
         for name, model in self.models.items():
             y_pred, y_pred_prob = self._get_prediction_from_data(model, self.data)
@@ -58,7 +76,7 @@ class ClassificationPerformanceComparer:
     def calculate_metric_comparison_df(self):
         
         compdf = []
-        for name, model in self.models.items():
+        for name in self.model_names:
             crdf = pd.DataFrame(skmetrics.classification_report(
                 self.true_labels, self.predictions[name], 
                 target_names=self.class_names, output_dict=True))
