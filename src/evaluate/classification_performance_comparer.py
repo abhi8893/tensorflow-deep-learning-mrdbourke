@@ -44,10 +44,33 @@ class ClassificationPerformanceComparer:
         clf_comp = cls(models, data, class_names=class_names, model_names=model_names)
         predictions = [clf_comp._make_prediction_shape_consistent(pred) for pred in predictions]
 
-        clf_comp.prediction_probs = dict(zip(clf_comp.model_names, [pred.max(axis=1) for pred in predictions]))
-        clf_comp.predictions = dict(zip(clf_comp.model_names, [pred.argmax(axis=1) for pred in predictions]))
+        clf_comp.prediction_probs = dict(zip(clf_comp.model_names, 
+                                            [clf_comp._get_pred_proba(pred) for pred in predictions]))
+        clf_comp.predictions = dict(zip(clf_comp.model_names, 
+                                        [clf_comp._get_pred_from_reshaped_pred_proba(pred_proba) for pred_proba in clf_comp.prediction_probs.values()]))
 
         return clf_comp
+
+    @staticmethod
+    def _get_pred_proba(pred):
+
+        if len(pred.shape) == 1:
+            return pred[:, np.newaxis]
+        elif pred.shape[-1] == 1:
+            return pred
+        elif pred.shape[-1] == 2:
+            return pred[:, 1, np.newaxis]
+        else:
+            return pred
+
+
+    @staticmethod
+    def _get_pred_from_reshaped_pred_proba(pred):
+        if pred.shape[-1] == 1:
+            return pred.round().astype(int)
+        else:
+            return pred.argmax(axis=1)
+
         
     def _get_prediction_from_data(self, model, data):    
         if isinstance(data, tf.keras.preprocessing.image.DirectoryIterator):
@@ -71,9 +94,9 @@ class ClassificationPerformanceComparer:
     @staticmethod
     def _get_true_labels_from_data(data):
         if isinstance(data, tf.keras.preprocessing.image.DirectoryIterator):
-            return data.labels
+            return data.labels.reshape(-1, 1)
         elif isinstance(data, (tuple, list)):
-            return data[1]
+            return data[1].reshape(-1, 1)
 
 
     def calculate_predictions(self):
