@@ -1,6 +1,7 @@
 import tensorflow as tf
 from sklearn import metrics as skmetrics
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -41,18 +42,31 @@ class ClassificationPerformanceComparer:
         models = [None for _ in range(n_models)] # Since we don't have models
 
         clf_comp = cls(models, data, class_names=class_names, model_names=model_names)
-        clf_comp.predictions = dict(zip(clf_comp.model_names, predictions))
+        predictions = [clf_comp._make_prediction_shape_consistent(pred) for pred in predictions]
+
+        clf_comp.prediction_probs = dict(zip(clf_comp.model_names, [pred.max(axis=1) for pred in predictions]))
+        clf_comp.predictions = dict(zip(clf_comp.model_names, [pred.argmax(axis=1) for pred in predictions]))
 
         return clf_comp
         
-    @staticmethod
-    def _get_prediction_from_data(model, data):    
+    def _get_prediction_from_data(self, model, data):    
         if isinstance(data, tf.keras.preprocessing.image.DirectoryIterator):
             y_pred_prob = model.predict(data)
         elif isinstance(data, (tuple, list)):
             y_pred_prob = model.predict(data[0])
-            
+
+
+        y_pred_prob = self._make_prediction_shape_consistent(y_pred_prob)
+
         return y_pred_prob.argmax(axis=1), y_pred_prob.max(axis=1)
+
+    @staticmethod
+    def _make_prediction_shape_consistent(pred):
+        pred = np.squeeze(pred)
+        if len(pred.shape) == 1:
+            pred = pred.reshape(-1, 1)
+
+        return pred
 
     @staticmethod
     def _get_true_labels_from_data(data):
