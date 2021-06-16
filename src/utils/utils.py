@@ -77,6 +77,16 @@ def reshape_classification_prediction(pred):
         return pred
 
 
+def sample_numpy_array(*arrays, prop):
+
+    total_samples = len(arrays[0])
+    num_samples = int(prop*total_samples)
+    rand_idx = np.random.randint(0, total_samples, size=num_samples)
+
+    sample_arrays = [arr[rand_idx] for arr in arrays]
+
+    return sample_arrays
+
                                      
             
         
