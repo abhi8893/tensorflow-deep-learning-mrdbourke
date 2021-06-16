@@ -3,6 +3,7 @@ Utility functions
 '''
 import tensorflow as tf
 import pandas as pd
+import numpy as np
 import os
 import datetime
 from pathlib import Path
@@ -63,6 +64,19 @@ def get_series_group_counts(ser):
     count_df.columns = ['count', 'prop']
     
     return count_df
+
+
+def reshape_classification_prediction(pred):
+    if len(pred.shape) == 1:
+        return pred[:, np.newaxis]
+    elif pred.shape[-1] == 1:
+        return pred
+    elif pred.shape[-1] == 2:
+        return pred[:, 1, np.newaxis]
+    else:
+        return pred
+
+
                                      
             
         
