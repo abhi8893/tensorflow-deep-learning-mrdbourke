@@ -137,9 +137,10 @@ class ClassificationPerformanceComparer:
         
     
     
-    def plot_metric_comparison_df(self):
-        plt.figure(figsize=(8, 4))
-        sns.barplot(x='metric', y='value', hue='model', data=self.compdf_small)
+    def plot_metric_comparison_df(self, ax=None):
+        if ax is None:
+            plt.figure(figsize=(8, 4))
+        sns.barplot(x='metric', y='value', hue='model', data=self.compdf_small, ax=ax)
         plt.legend(bbox_to_anchor=[1.01, 0.6])
     
     
