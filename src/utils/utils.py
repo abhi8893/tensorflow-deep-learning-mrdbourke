@@ -87,6 +87,11 @@ def sample_numpy_array(*arrays, prop):
 
     return sample_arrays
 
+def get_date_range(ser, format=None):
+    ser = pd.to_datetime(ser, format=format)  
+    ser = pd.Series(ser)
+    return ser.agg(['min', 'max'])
+
                                      
             
         
