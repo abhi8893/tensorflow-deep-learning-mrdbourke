@@ -7,3 +7,7 @@ venv
 !.keep
 *.code-workspace
 venv-*
+checkpoints/*
+models/*
+tensorboard_logs/*
+history_logs/*
