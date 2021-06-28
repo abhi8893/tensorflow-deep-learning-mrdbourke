@@ -6,8 +6,6 @@ repo_name: abhi8893/tensorflow-deep-learning-mrdbourke
 
 theme:
   name: material
-  # logo: assets/misc-ztm-logo.png
-  # favicon: assets/misc-ztm-logo.png
   features:
     - navigation.instant
 palette:
@@ -37,13 +35,13 @@ plugins:
 nav:
   - Home: 'index.md'
   - Fundamentals:
-    - 'Fundamentals of Tensorflow': '00-tensorflow-fundamentals.ipynb'
+    - 'Tensorflow Fundamentals': '00-tensorflow-fundamentals.ipynb'
   - Neural Network Regression:
     - 'Simple Linear Regression': '01A-tensorflow-neural-network-regression.ipynb'
     - 'Polynomial Regression with Tensorflow': '01B-tensorflow-neural-network-regression.ipynb'
     - 'Medical Cost Prediction': '01C-tensorflow-neural-network-regression.ipynb'
   - Neural Network Classification:
-    - 'Tensorflow Playground reimplementation': '02A-tensorflow-playground-reimplementation.ipynb'
+    - 'Tensorflow Playground Reimplementation': '02A-tensorflow-playground-reimplementation.ipynb'
     - 'Fashion MNIST': '02B-Fashion-MNIST-larger-example.ipynb'
   - Computer Vision:
     - 'Pizza Steak Classifier': '03A-Pizza-Steak-Image-Classification.ipynb'
