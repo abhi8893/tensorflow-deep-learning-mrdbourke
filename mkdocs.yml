@@ -1,8 +1,8 @@
 site_name: Tensorflow Deep Learning - Exploring mrdbourke's course
-site_url: https://abhi8893.github.io/Tensorflow-Deep-Learning-mrdbourke
+site_url: https://abhi8893.github.io/tensorflow-deep-learning-mrdbourke
 
-repo_url: https://github.com/abhi8893/Tensorflow-Deep-Learning-mrdbourke
-repo_name: abhi8893/abhi8893/Tensorflow-Deep-Learning-mrdbourke
+repo_url: https://github.com/abhi8893/tensorflow-deep-learning-mrdbourke
+repo_name: abhi8893/abhi8893/tensorflow-deep-learning-mrdbourke
 
 theme:
   name: material
