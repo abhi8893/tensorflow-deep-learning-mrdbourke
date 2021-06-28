@@ -7,9 +7,9 @@ This is my exploration of [mrdbourke](https://github.com/mrdbourke)'s awesome �
 > I wrote and rewrote all of the code myself. Yes, I am serious. Even though there will be much similarity with the original course notebooks, but I rewrote every markdown, every line of code in this entire repository. I took my time to:
 >
 >
->  ✔️ study everything deeply \
->  ✔️ develop my own routines with loads of useful functionalities! \
->  ✔️ made this repository into a well structured, and an installable Python package `src` \
+>  ✔️ study everything deeply <br />
+>  ✔️ develop my own routines with loads of useful functionalities! <br />
+>  ✔️ made this repository into a well structured, and an installable Python package `src` <br />
 >  ✔️ tracked issue, tasks, bugs and features like a `pro` 😎 using `Github Issues` and `Github Projects`
 
 ## The structure of this repository
