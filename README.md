@@ -16,22 +16,22 @@ This is my exploration of [mrdbourke](https://github.com/mrdbourke)'s awesome �
 
 ```
 .
-|-- README.md # the README.md file of this repo 📖
-|-- bugrefs # references for filing bugs 🐛
-|-- checkpoints # model checkpointed weights for easy resuming of training 🏋️
-|-- data # the datasets used in this repository 📈📉
-|-- docs # docs for the deployed website of this repo 📗
-|-- history_logs # logs of model training history useful for reloading models
-|-- mkdocs.yml # the yml script that triggers the deployment of the hosted website of this repo using Github Actions 🌏
-|-- models # TFSavedModel models trained on various deep learning tasks 🤖
-|-- notebooks # the jupyter notebooks! 📚📚
-|-- references # often images for easier insertion into jupyter notebooks
-|-- reports # output reports of the analysis 🗒️
-|-- requirements.txt # the library requirements of the installable package (src) 📄
-|-- scripts # mainly download scripts for data 📃
-|-- setup.py # the setup script for installing the src package 
-|-- src # the installable src package with useful routines
-|-- tensorboard_logs # tensorboard logs of model training for visualing on TensorBoard
+|-- README.md                       # the README.md file of this repo 📖
+|-- bugrefs                         # references for filing bugs 🐛
+|-- checkpoints                     # model checkpointed weights for easy resuming of training 🏋️
+|-- data                            # the datasets used in this repository 📈📉
+|-- docs                            # docs for the deployed website of this repo 📗
+|-- history_logs                    # logs of model training history useful for reloading models
+|-- mkdocs.yml                      # Github Actions for making docs yml script 🌏
+|-- models                          # TFSavedModel models trained on various deep learning tasks 🤖
+|-- notebooks                       # the jupyter notebooks! 📚📚
+|-- references                      # often images for easier insertion into jupyter notebooks
+|-- reports                         # output reports of the analysis 🗒️
+|-- requirements.txt                # the library requirements of the installable package (src) 📄
+|-- scripts                         # mainly download scripts for data 📃
+|-- setup.py                        # the setup script for installing the src package 
+|-- src                             # the installable src package with useful routines
+|-- tensorboard_logs                # tensorboard logs of model training for visualing on TensorBoard
 ```
 
 ## Original Resources
