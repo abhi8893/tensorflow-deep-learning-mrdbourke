@@ -1,4 +1,4 @@
-site_name: Tensorflow Deep Learning - Exploring mrdbourke's course
+site_name: Tensorflow Deep Learning
 site_url: https://abhi8893.github.io/tensorflow-deep-learning-mrdbourke
 
 repo_url: https://github.com/abhi8893/tensorflow-deep-learning-mrdbourke
@@ -10,19 +10,19 @@ theme:
   # favicon: assets/misc-ztm-logo.png
   features:
     - navigation.instant
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-    - scheme: slate
-      primary: orange
-      accent: orange
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+palette:
+  - scheme: default
+    primary: indigo
+    accent: indigo
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to dark mode
+  - scheme: slate
+    primary: orange
+    accent: orange
+    toggle:
+      icon: material/weather-night
+      name: Switch to light mode
 
 markdown_extensions:
   - pymdownx.highlight
@@ -35,42 +35,29 @@ plugins:
  - search
 
 nav:
-  - Home: 'index.md'
+  - Home: index.md
   - Fundamentals:
-    - '00 Fundamentals of Tensorflow': '00-tensorflow-fundamentals.ipynb'
+    - 00 Fundamentals of Tensorflow: 00-tensorflow-fundamentals.ipynb
   - Neural Network Regression:
-    - '01A Simple Linear Regression': '01A-tensorflow-neural-network-regression.ipynb'
-    - '01B Polynomial Regression with Tensorflow': '01B-tensorflow-neural-network-regression.ipynb'
-    - '01C Medical Cost Prediction': '01C-tensorflow-neural-network-regression.ipynb'
+    - 01A Simple Linear Regression: 01A-tensorflow-neural-network-regression.ipynb
+    - 01B Polynomial Regression with Tensorflow: 01B-tensorflow-neural-network-regression.ipynb
+    - 01C Medical Cost Prediction: 01C-tensorflow-neural-network-regression.ipynb
   - Neural Network Classification:
-    - '02A Tensorflow Playground reimplementation': '02A-tensorflow-playground-reimplementation.ipynb'
-    - '02B Fashion MNIST': '02B-Fashion-MNIST-larger-example.ipynb'
+    - 02A Tensorflow Playground reimplementation: 02A-tensorflow-playground-reimplementation.ipynb
+    - 02B Fashion MNIST: 02B-Fashion-MNIST-larger-example.ipynb
   - Computer Vision:
-    - '02C Pizza Steak Classifier':'03A-Pizza-Steak-Image-Classification.ipynb'
-    - '02D 10 Food Multiclass Classification': '03B-10-Food-Multiclass-Classification.ipynb'
+    - 02C Pizza Steak Classifier:03A-Pizza-Steak-Image-Classification.ipynb
+    - 02D 10 Food Multiclass Classification: 03B-10-Food-Multiclass-Classification.ipynb
   - Transfer Learning:
-    - 'Feature Extraction': '04-Transfer-Learning-Part1-Feature-Extraction.ipynb'
-    - 'Fine Tuning': '05-Transfer-Learning-Part2-Fine-Tuning.ipynb'
-    - 'Food Vision Mini': '06-Transfer-Learning-Part3-Food-Vision-Mini.ipynb'
-    - 'Food Vision Big': '07-Milestone-Project-1-Food-Vision-Big.ipynb'
+    - Feature Extraction: 04-Transfer-Learning-Part1-Feature-Extraction.ipynb
+    - Fine Tuning: 05-Transfer-Learning-Part2-Fine-Tuning.ipynb
+    - Food Vision Mini: 06-Transfer-Learning-Part3-Food-Vision-Mini.ipynb
+    - Food Vision Big: 07-Milestone-Project-1-Food-Vision-Big.ipynb
   - Natural Language Processing:
-    - 'Disaster Tweets Classification': '08-NLP-Basics-in-Tensorflow-Disaster-Tweets.ipynb'
-    - 'Restructuring PubMed Abstracts using NLP': '09-SkimLit-NLP-Milestone-Project-2.ipynb'
+    - Disaster Tweets Classification: 08-NLP-Basics-in-Tensorflow-Disaster-Tweets.ipynb
+    - Restructuring PubMed Abstracts using NLP: 09-SkimLit-NLP-Milestone-Project-2.ipynb
   - Time Series Forecasting:
-    - 'Bitcoin Price Forecasting': '10-Milestone-Project-3-Time-Series-Forecasting-in-Tensorflow.ipynb'
-
-  # - Computer Vision:
-  #   - '03 Convolutional Neural Networks and Computer Vision with TensorFlow': '03_convolutional_neural_networks_in_tensorflow.ipynb'
-  # - Transfer Learning:
-  #   - '04 Transfer Learning with TensorFlow Part 1: Feature Extraction': '04_transfer_learning_in_tensorflow_part_1_feature_extraction.ipynb'
-  #   - '05 Transfer Learning with TensorFlow Part 2: Fine-tuning': '05_transfer_learning_in_tensorflow_part_2_fine_tuning.ipynb'
-  #   - '06 Transfer Learning with TensorFlow Part 3: Scaling up': '06_transfer_learning_in_tensorflow_part_3_scaling_up.ipynb'
-  #   - '07 Milestone Project 1: 🍔👁 Food Vision Big™': '07_food_vision_milestone_project_1.ipynb'
-  # - Natural Language Processing:
-  #   - '08 Natural Language Processing with in TensorFlow': '08_introduction_to_nlp_in_tensorflow.ipynb' 
-  #   - '09 Milestone Project 2: SkimLit 📄🔥': '09_SkimLit_nlp_milestone_project_2.ipynb'
-  # - Time Series:
-  #   - '(Work in Progress) 10 Time Series in TensorFlow + Milestone Project 3: BitPredict 💰📈': '10_time_series_forecasting_in_tensorflow.ipynb'
+    - Bitcoin Price Forecasting: 10-Milestone-Project-3-Time-Series-Forecasting-in-Tensorflow.ipynb
 
 extra:
   social:
