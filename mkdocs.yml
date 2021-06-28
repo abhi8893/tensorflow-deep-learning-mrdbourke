@@ -35,29 +35,29 @@ plugins:
  - search
 
 nav:
-  - Home: index.md
+  - Home: 'index.md'
   - Fundamentals:
-    - Fundamentals of Tensorflow: 00-tensorflow-fundamentals.ipynb
+    - 'Fundamentals of Tensorflow': '00-tensorflow-fundamentals.ipynb'
   - Neural Network Regression:
-    - Simple Linear Regression: 01A-tensorflow-neural-network-regression.ipynb
-    - Polynomial Regression with Tensorflow: 01B-tensorflow-neural-network-regression.ipynb
-    - Medical Cost Prediction: 01C-tensorflow-neural-network-regression.ipynb
+    - 'Simple Linear Regression': '01A-tensorflow-neural-network-regression.ipynb'
+    - 'Polynomial Regression with Tensorflow': '01B-tensorflow-neural-network-regression.ipynb'
+    - 'Medical Cost Prediction': '01C-tensorflow-neural-network-regression.ipynb'
   - Neural Network Classification:
-    - Tensorflow Playground reimplementation: 02A-tensorflow-playground-reimplementation.ipynb
-    - Fashion MNIST: 02B-Fashion-MNIST-larger-example.ipynb
+    - 'Tensorflow Playground reimplementation': '02A-tensorflow-playground-reimplementation.ipynb'
+    - 'Fashion MNIST': '02B-Fashion-MNIST-larger-example.ipynb'
   - Computer Vision:
-    - Pizza Steak Classifier: 03A-Pizza-Steak-Image-Classification.ipynb
-    - 10 Food Multiclass Classification: 03B-10-Food-Multiclass-Classification.ipynb
+    - 'Pizza Steak Classifier': '03A-Pizza-Steak-Image-Classification.ipynb'
+    - '10 Food Multiclass Classification': '03B-10-Food-Multiclass-Classification.ipynb'
   - Transfer Learning:
-    - Feature Extraction: 04-Transfer-Learning-Part1-Feature-Extraction.ipynb
-    - Fine Tuning: 05-Transfer-Learning-Part2-Fine-Tuning.ipynb
-    - Food Vision Mini: 06-Transfer-Learning-Part3-Food-Vision-Mini.ipynb
-    - Food Vision Big: 07-Milestone-Project-1-Food-Vision-Big.ipynb
+    - 'Feature Extraction': '04-Transfer-Learning-Part1-Feature-Extraction.ipynb'
+    - 'Fine Tuning': '05-Transfer-Learning-Part2-Fine-Tuning.ipynb'
+    - 'Food Vision Mini': '06-Transfer-Learning-Part3-Food-Vision-Mini.ipynb'
+    - 'Food Vision Big': '07-Milestone-Project-1-Food-Vision-Big.ipynb'
   - Natural Language Processing:
-    - Disaster Tweets Classification: 08-NLP-Basics-in-Tensorflow-Disaster-Tweets.ipynb
-    - Restructuring PubMed Abstracts using NLP: 09-SkimLit-NLP-Milestone-Project-2.ipynb
+    - 'Disaster Tweets Classification': '08-NLP-Basics-in-Tensorflow-Disaster-Tweets.ipynb'
+    - 'Restructuring PubMed Abstracts using NLP': '09-SkimLit-NLP-Milestone-Project-2.ipynb'
   - Time Series Forecasting:
-    - Bitcoin Price Forecasting: 10-Milestone-Project-3-Time-Series-Forecasting-in-Tensorflow.ipynb
+    - 'Bitcoin Price Forecasting': '10-Milestone-Project-3-Time-Series-Forecasting-in-Tensorflow.ipynb'
 
 extra:
   social:
