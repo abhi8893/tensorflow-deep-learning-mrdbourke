@@ -27,7 +27,7 @@ nav:
   - Home: 'index.md'
   - Fundamentals:
     - '00 Fundamentals of Tensorflow': '00-tensorflow-fundamentals.ipynb'
-  - Neural Network Regression
+  - Neural Network Regression:
     - '01A Simple Linear Regression': '01A-tensorflow-neural-network-regression.ipynb'
     - '01B Polynomial Regression with Tensorflow': ' 01B-tensorflow-neural-network-regression.ipynb'
     - '01C Medical Cost Prediction': '01C-tensorflow-neural-network-regression.ipynb'
