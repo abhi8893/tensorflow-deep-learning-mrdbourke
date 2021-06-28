@@ -25,10 +25,12 @@ plugins:
 
 nav:
   - Home: 'index.md'
-  # - Fundamentals:
-  #   - '00 Getting started with TensorFlow': '00_tensorflow_fundamentals.ipynb'
-  #   - '01 Neural Network Regression with TensorFlow': '01_neural_network_regression_in_tensorflow.ipynb'
-  #   - '02 Neural Network Classification with TensorFlow': '02_neural_network_classification_in_tensorflow.ipynb'
+  - Fundamentals:
+    - '00 Fundamentals of Tensorflow': '00-tensorflow-fundamentals.ipynb'
+  - Neural Network Regression
+    - '01A Simple Linear Regression': '01A-tensorflow-neural-network-regression.ipynb'
+    - '01B Polynomial Regression with Tensorflow': ' 01B-tensorflow-neural-network-regression.ipynb'
+    - '01C Medical Cost Prediction': '01C-tensorflow-neural-network-regression.ipynb'
   # - Computer Vision:
   #   - '03 Convolutional Neural Networks and Computer Vision with TensorFlow': '03_convolutional_neural_networks_in_tensorflow.ipynb'
   # - Transfer Learning:
