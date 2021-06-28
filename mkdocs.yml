@@ -11,7 +11,18 @@ theme:
   features:
     - navigation.instant
   palette:
-    primary: black
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: orange
+      accent: orange
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
 
 markdown_extensions:
   - pymdownx.highlight
@@ -29,8 +40,25 @@ nav:
     - '00 Fundamentals of Tensorflow': '00-tensorflow-fundamentals.ipynb'
   - Neural Network Regression:
     - '01A Simple Linear Regression': '01A-tensorflow-neural-network-regression.ipynb'
-    - '01B Polynomial Regression with Tensorflow': ' 01B-tensorflow-neural-network-regression.ipynb'
+    - '01B Polynomial Regression with Tensorflow': '01B-tensorflow-neural-network-regression.ipynb'
     - '01C Medical Cost Prediction': '01C-tensorflow-neural-network-regression.ipynb'
+  - Neural Network Classification:
+    - '02A Tensorflow Playground reimplementation': '02A-tensorflow-playground-reimplementation.ipynb'
+    - '02B Fashion MNIST': '02B-Fashion-MNIST-larger-example.ipynb'
+  - Computer Vision:
+    - '02C Pizza Steak Classifier':'03A-Pizza-Steak-Image-Classification.ipynb'
+    - '02D 10 Food Multiclass Classification': '03B-10-Food-Multiclass-Classification.ipynb'
+  - Transfer Learning:
+    - 'Feature Extraction': '04-Transfer-Learning-Part1-Feature-Extraction.ipynb'
+    - 'Fine Tuning': '05-Transfer-Learning-Part2-Fine-Tuning.ipynb'
+    - 'Food Vision Mini': '06-Transfer-Learning-Part3-Food-Vision-Mini.ipynb'
+    - 'Food Vision Big': '07-Milestone-Project-1-Food-Vision-Big.ipynb'
+  - Natural Language Processing:
+    - 'Disaster Tweets Classification': '08-NLP-Basics-in-Tensorflow-Disaster-Tweets.ipynb'
+    - 'Restructuring PubMed Abstracts using NLP': '09-SkimLit-NLP-Milestone-Project-2.ipynb'
+  - Time Series Forecasting:
+    - 'Bitcoin Price Forecasting': '10-Milestone-Project-3-Time-Series-Forecasting-in-Tensorflow.ipynb'
+
   # - Computer Vision:
   #   - '03 Convolutional Neural Networks and Computer Vision with TensorFlow': '03_convolutional_neural_networks_in_tensorflow.ipynb'
   # - Transfer Learning:
