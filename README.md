@@ -74,6 +74,14 @@ src/
 | **data** | `fashion mnist` `circles` `exclusive_or` `gaussian` `spiral` |
 | **models** | 🤖 **dummy_data_classification**: `TensorflowPlayground` <br> 🤖 **fashion_mnist**: `simple-dense-2layer` `medium-dense-2layer` `cnn` `cnn-best_lr` |
 
+## Computer Vision
+
+|            |            |
+| ---------- | ---------- |
+| **concepts** | `convolutional neural network` `parameter sharing` `data augmentation` `batch dataloader` `prefetching` `noise removal` `ClassicImageDataDirectory` `dropout regularization` `conv-pool conv-pool architecture` `LearningRateScheduler` `binary crossentropy` `categorical crossentropy` `classification report` `confusion matrix` |
+| **data** | `pizza_steak` |
+| **models** | 🤖 **pizza_steak_multiclass_classification**: `Dense` `TinyVGG` `TinyVGG-data-augment` `TinyVGG-data-augment-bestlr` `TinyVGG-data-augment-dropout-last` <br> 🤖 **10_food_multiclass_classification**: `TinyVGG` `TinyVGG-data-augment` `TinyVGG-data-augment-bestlr` `TinyVGG-Extra-Conv-Dense` `TinyVGG-Extra-Conv-BatchNorm-Dense` `TinyVGG-Extra-Conv-BatchNorm-Dense-ReduceLROnPlateau` `efficientnetb0_feature_extraction_1_percent` `efficientnetb0_feature_extraction_10_percent` `efficientnetb0_fine_tuning_10_percent` `efficientnetb0_fine_tuning_100_percent` |
+
 ## Original Resources
 
 
