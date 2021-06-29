@@ -66,6 +66,14 @@ src/
 | data | `polynomial model sampling` `medical cost ` |
 | models | 🤖 **quadratic_regression:** `slr` `single_layer` `double_layer` `polyfeat` <br> 🤖 **medical_cost_prediction:** `3_layer_no_boxcox` `3_layer_boxcox` |
 
+## Neural Network Classification
+
+|            |            |
+| ---------- | ---------- |
+| **concepts** | `learning rate` `L1/L2 regularization` `activation functions` `gaussian noise` `sampling dummy data` `neurons` `layers` `learning curve` `decision boundary` `multiclass classification` `categorical crossentropy` `classification performance evaluation LearningRateScheduler` `feature engineering` |
+| **data** | `fashion mnist` `circles` `exclusive_or` `gaussian` `spiral` |
+| **models** | 🤖 **dummy_data_classification**: `TensorflowPlayground` <br> 🤖 **fashion_mnist**: `simple-dense-2layer` `medium-dense-2layer` `cnn` `cnn-best_lr` |
+
 ## Original Resources
 
 
