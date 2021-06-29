@@ -38,7 +38,7 @@ This is my exploration of [mrdbourke](https://github.com/mrdbourke)'s awesome ðŸ
 
 ```
 src/
-|-- __init__.py                     # top level \_\_init\_\_.py
+|-- __init__.py                     # top level __init__.py
 |-- evaluate                        # performance evaluation of models
 |-- image                           # image processing routines
 |-- models                          # custom models
