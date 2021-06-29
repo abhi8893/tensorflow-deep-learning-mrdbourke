@@ -82,6 +82,33 @@ src/
 | **data** | `pizza_steak` |
 | **models** | 🤖 **pizza_steak_multiclass_classification**: `Dense` `TinyVGG` `TinyVGG-data-augment` `TinyVGG-data-augment-bestlr` `TinyVGG-data-augment-dropout-last` <br> 🤖 **10_food_multiclass_classification**: `TinyVGG` `TinyVGG-data-augment` `TinyVGG-data-augment-bestlr` `TinyVGG-Extra-Conv-Dense` `TinyVGG-Extra-Conv-BatchNorm-Dense` `TinyVGG-Extra-Conv-BatchNorm-Dense-ReduceLROnPlateau` `efficientnetb0_feature_extraction_1_percent` `efficientnetb0_feature_extraction_10_percent` `efficientnetb0_fine_tuning_10_percent` `efficientnetb0_fine_tuning_100_percent` |
 
+## Transfer Learning
+
+|            |            |
+| ---------- | ---------- |
+| **concepts** | `transfer learning` `ReduceLRonPlateau` `data augmentation as regularization` `as-is transfer learning` `feature-extraction transfer learning` `fine-tuning transfer learning` `TensorflowHub` `training callbacks` `TensorBoard` `ModelCheckpoint` `EarlyStopping` `ImageDataGenerator` `pretrained task vs downstream task` `gradual unfreezing` `keras Functional API` `GlobalAveragePool` `top-n accuracy` `GPU compute capability` `mixed precision training` `image normalization` `image resizing` `tf.data API` `map() ` `shuffle()` `batch()` `prefetch()` `sparse categorical crossentropy` |
+| **data** | `10_food_classes` |
+| **models** | 🤖 **10_food_multiclass_classification**: `efficientnetb0_feature_extraction_1_percent` `efficientnetb0_feature_extraction_10_percent` `efficientnetb0_fine_tuning_10_percent` `efficientnetb0_fine_tuning_100_percent` <br> 🤖 **101_food_multiclass_classification**: `efficientnetb0_fine_tune_10_percent (FoodVisionMini)` `resnet50v2_fine_tune_10_percent (FoodVisionMini)` `efficientnetb0_feature_extraction_all_data (FoodVisionBig)` ` efficientnetb0_fine_tune_all_data (FoodVisionBig)` |
+
+
+## Natural Language Processing
+
+|            |            |
+| ---------- | ---------- |
+| **concepts** | `Tf-idf` `count vectorization` `Multi-label classification` `machine translation` `seq2seq` `encoder-decoder` `attention` `ensembling` `text preprocessing` `text vectorization` `word-level tokenization` `character-level tokenization` `sub-word tokenization` `embeddings` `pretrained embeddings` `embedding layer` `embeddings as transfer learning` `high accuracy vs fast inference` `multimodal input models` `joint sentence classification` `Conv1D` `label smoothing` `TensorSliceDataset` `PrefetchDataset` `hybrid embeddings` `positional embeddings` `learning embedding representation of categorical feature` |
+| **data** | `disaster_tweets` `PubMed_RCT` |
+| **models** | 🤖 **disaster_tweets_classification**: `baseline-naive-bayes` `simple-dense` `GRU` `LSTM` `Bidirectional-LSTM` `CNN` `USE-Simple-Dense` `USE-Simple-Dense-10-percent` `ensemble-top3-avg` `ensemble-top3-majority` `ensemble-top3-meta-classifier` <br> 🤖 **pubmed_rct_abstract_multiclass_classification**: `naive-bayes-baseline` `USE-feature-extraction` `Conv1D-word-embed` `Conv1D-char-embed` `USE-char-hybrid-embed` `use-char-pos-embed-tribrid` |
+
+
+## Time Series Forecasting
+
+|            |            |
+| ---------- | ---------- |
+| **concepts** | `anomaly detection as classification` `forecasting as supervised regression` `train-test split for time series` `time series window-horizon` `multivariate time series` `data uncertainty` `model uncertainty` `open and closed systems` `turkey problem` `black swan events` `tensorflow Layer subclassing` `ensemble tricks –  variation on loss function` `window sizes` `seeds` `forecast uncertainty` |
+| **data** | ``bitcoin_prices`` |
+| **models** | 🤖 **bitcoin_time_series_prediction**: `naive-model-baseline_W1H1` `simple-dense_W7H1` `simple-dense_W30H1` `simple-dense_W30H7` `Conv1D_W7H1` `LSTM_W7H1` `multivariate-dense_W7H1` `NbeatsGeneric_W7H1` `ensemble-mean_W7H1` `ensemble-median_W7H1` `turkey-model_W7H1` |
+
+
 ## Original Resources
 
 
