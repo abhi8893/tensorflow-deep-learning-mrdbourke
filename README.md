@@ -12,7 +12,7 @@ This is my exploration of [mrdbourke](https://github.com/mrdbourke)'s awesome �
 >  ✔️ made this repository into a well structured, and an installable Python package `src` <br />
 >  ✔️ tracked issue, tasks, bugs and features like a `pro` 😎 using `Github Issues` and `Github Projects`
 
-## The structure of this repository
+## Structure of this repository
 
 ```
 .
@@ -34,7 +34,36 @@ This is my exploration of [mrdbourke](https://github.com/mrdbourke)'s awesome �
 |-- tensorboard_logs                # tensorboard logs of model training for visualing on TensorBoard
 ```
 
+## Structure of the `src` package
+
+```
+src/
+|-- __init__.py                     # top level \_\_init\_\_.py
+|-- evaluate                        # performance evaluation of models
+|-- image                           # image processing routines
+|-- models                          # custom models
+|-- preprocess                      # general preprocessing routines
+|-- text                            # text processing routines
+|-- tfplay                          # TensorFlowPlayground reimplementation
+|-- utils                           # general utilities
+`-- visualize                       # visualization routines
+```
+
+## Fundamentals
+
+
+|          	|   	|
+|----------	|---	|
+| **concepts** 	| `tensor algebra` `tensorflow-numpy link` `tensor manipulation` `constant tensor` `variable tensor` `random tensor` `sampling tensors` `tensor shapes intuition`                 `matrix multiplication intution` `aggregating tensors` `tensor datatypes` `tensor precision` `setting seed` `using GPUs with tensorflow`    	|
+| **data**     	|   `constant tensors` `variable tensors` `drawing random tensors from probability distributions`	|
+| **models**   	|   `None`	|
+
+## Neural Network Regression
+
+
+
 ## Original Resources
+
 
 - [Original Repo](https://github.com/mrdbourke/tensorflow-deep-learning)
 - [Youtube Playlist](https://www.youtube.com/playlist?list=PL6vjgQ2-qJFfU2vF6-lG9DlSa4tROkzt9)
