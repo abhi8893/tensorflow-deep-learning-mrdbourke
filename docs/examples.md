@@ -160,3 +160,114 @@ ax2.set_title('box-cox transformed');
 ```
 ![](images/box-cox_transformed.jpg)
 
+## Neural Network Classification
+
+### `TensorflowPlayground`
+
+#### Features
+
+A teeny tiny reimplementation of the https://playground.tensorflow.org/
+
+* Start, pause, resume and reset training
+    * Set max epochs
+* Adjust Learning rate (+ Optimizer)
+* Adjust activation (overall except last layer)
+    * First layer activation option also
+* Add Regularization (Overall all weights, [L1, L2])
+    * Adjusting regularization rate
+* Choose datasets - circle, exclusive_or, gaussian, spiral
+    * Ratio of training to test data
+    * Noise level
+* Choose Features - X1, X2, X1_sq,X2_sq, X1X2, sin(X1), sin(X2)
+* Choose architecture - no of hidden layers, no or neurons in each layer
+* Monitor/Plot learning curves
+* Monitor/Plot decision boundary
+    * Option to show test data
+    * Option to discretize output
+
+
+`Setup your playground!`
+
+```python
+tfp = TensorflowPlayground(dataset='circle', 
+                           features=['X1', 'X2'], 
+                           neurons=[8, 4],
+                           activation='sigmoid',
+                           learning_rate=0.1,
+                           scale=True)
+```
+
+`Plot the data!`
+
+```python
+tfp.data.plot()
+```
+![](images/tfplayground_data.jpg)
+
+`Train the model!`
+
+```python
+tfp.train(epochs=15, batch_size=30)
+```
+```
+Epoch 1/15
+12/12 [==============================] - 1s 3ms/step - loss: 0.7062
+Epoch 2/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6944
+Epoch 3/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.7057
+Epoch 4/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6963
+Epoch 5/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6937
+Epoch 6/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6931
+Epoch 7/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6909
+Epoch 8/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6891
+Epoch 9/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6931
+Epoch 10/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6960
+Epoch 11/15
+12/12 [==============================] - 0s 5ms/step - loss: 0.6851
+Epoch 12/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6787
+Epoch 13/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6704
+Epoch 14/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6470
+Epoch 15/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6076
+```
+`Plot the learning curve!`
+
+```python
+tfp.plot_learning_curve();
+```
+![](images/tfplayground_learning_curve.jpg)
+
+``
+`Plot the predictions`
+
+```python
+fig, axn = plt.subplots(1, 2, figsize=(12, 4))
+
+for ax, subset in zip(axn, ['train', 'test']):
+    cp = tfp.plot_decision_function(ax=ax)
+    tfp.data.plot(subset=subset, ax=cp.axes)
+    
+    ax.set_title(subset, fontdict=dict(weight='bold', size=20))
+    
+
+fig.colorbar(cp);
+```
+![](images/tfplayground.jpg)
+
+`Analyze the peformance`
+
+```python
+tfp.plot_confusion_matrix();
+```
+![](images/tfplayground_confusion_matrix.jpg)
