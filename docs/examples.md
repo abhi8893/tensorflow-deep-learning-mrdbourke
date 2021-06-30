@@ -106,3 +106,57 @@ intercept: 1.269910065117589, coefficients: [ 1.91208921 -0.09832959]
 ----
 ```
 
+### `Quadratic Regression Model Comparison`
+
+![](images/quadratic_regression_model_comparison.png)
+
+|Model   | Parameters  | RMSE |
+|---|---|---|
+|slr| 2| 23.92|
+|single_layer| 49| 17.15|
+|double_layer| 177| 17.24|
+|polyfeat| 3| 15.27|
+|true relationship| -| 15.11|
+
+`polyfeat` was a simple linear regression model but with 2 degree polynomial features. This had the lowest number of parameters and also the lowest RMSE! Goes on to show the importance of feature engineering, and also kernel methods even for neural networks!
+
+#### `Comparing Model Weights`
+
+```python
+from src.utils import check_tfmodels_weight_equality
+
+# train model
+model.fit(X, y)
+# save model
+model.save('model')
+# load model
+loaded_model = tf.keras.models.load_model('model')
+# check if weights are equal
+print(check_tfmodels_weight_equality(model, loaded_model))
+```
+
+```
+True
+```
+
+### `BoxCoxTransformer`
+
+```python
+import pandas as pd
+from src.preprocess import BoxCoxTransformer
+
+df = pd.read_csv('../data/medical_cost/medical_cost.csv')
+orig = df['charges'].to_numpy()
+
+bctrans = bctrans = BoxCoxTransformer(alpha=0.05)
+transformed = bctrans.fit_transform(orig)
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+
+ax1.hist(orig, bins=10)
+ax1.set_title('original')
+ax2.hist(transformed, bins=10,color='orange');
+ax2.set_title('box-cox transformed');
+```
+![](images/box-cox_transformed.jpg)
+
