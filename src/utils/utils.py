@@ -20,6 +20,15 @@ def describe_tensor(tensor):
     print('Total number of elements:', tf.size(tensor).numpy())
 
 
+def get_tensor_statistics(tensor):
+    print('min:', tf.reduce_min(tensor))
+    print('max:', tf.reduce_max(tensor))
+    print('mean:', tf.reduce_mean(tensor))
+    print('sum:', tf.reduce_sum(tensor))
+    print('std:', tf.math.reduce_std(tf.cast(tensor, dtype=tf.float32)))
+    print('variance:', tf.math.reduce_variance(tf.cast(tensor, dtype=tf.float32)))
+
+
 
 def get_dataframe_cols(df, cols):
     '''Get dataframe columns which are present in the pandas dataframe'''
