@@ -58,48 +58,6 @@ src/
 | **data**     	|   `constant tensors` `variable tensors` `drawing random tensors from probability distributions`	|
 | **models**   	|   `None`	|
 
-### Examples
-
-`Summarizing a tensor`
-
-```python
-import tensorflow as tf
-from src.utils import describe_tensor
-
-# set seed
-tf.random.set_seed(42)
-
-# make a random tensor
-tensor = tf.random.normal(shape=(1, 3, 3))
-
-# describe the tensor
-describe_tensor(tensor)
-```
-
-```
-Datatype: <dtype: 'float32'>
-Number of dimensions: 3
-Shape of tensor: (1, 3, 3)
-Elements along the 0 axis: 1
-Elements along the last axis: 3
-Total number of elements: 9
-```
-
-```python
-from src.utils import get_tensor_statistics
-
-# get basic statistics of the tensor
-get_tensor_statistics(tensor)
-```
-```
-min: tf.Tensor(-2.3880599, shape=(), dtype=float32)
-max: tf.Tensor(1.6994323, shape=(), dtype=float32)
-mean: tf.Tensor(-0.3720852, shape=(), dtype=float32)
-sum: tf.Tensor(-3.3487668, shape=(), dtype=float32)
-std: tf.Tensor(1.1511972, shape=(), dtype=float32)
-variance: tf.Tensor(1.325255, shape=(), dtype=float32)
-```
-
 ## Neural Network Regression
 
 |            |            |
