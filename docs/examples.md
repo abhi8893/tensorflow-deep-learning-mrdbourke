@@ -318,4 +318,6 @@ clf_comp = ClassificationPeformanceComparer(models, test_data)
 clf_comp.calculate_metric_comparison_df()
 clf_comp.plot_metric_comparison_df();
 ```
+
 ![](images/fashionmnist_model_comparison.jpg)
+
