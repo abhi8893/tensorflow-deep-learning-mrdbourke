@@ -300,13 +300,13 @@ Plot the label counts
 ```python
 imgds.plot_labelcounts();
 ```
-![](images/fashionmnist_labelanalyzer_plot.JPG)
+![](images/fashionmnist_labelanalyzer_plot.jpg)
 
 View random images
 ```python
 imgds.view_random_images(class_names='all', n_each=2, subset='train');
 ```
-![](images/fashionmnist_imgds_rand_images.JPG)
+![](images/fashionmnist_imgds_rand_images.jpg)
 
 Model Performance Comparison
 ```python
@@ -317,6 +317,4 @@ clf_comp.calculate_metric_comparison_df()
 clf_comp.plot_metric_comparison_df();
 ```
 
-<p>
-    <img src="images/fashionmnist_model_comparison.JPG" />
-</p>
+![](images/fashionmnist_model_comparison.JPG)
