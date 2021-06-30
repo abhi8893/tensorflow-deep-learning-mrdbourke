@@ -318,5 +318,5 @@ clf_comp.plot_metric_comparison_df();
 ```
 
 <p>
-    <img src="images/fashionmnist_model_comparison.jpg" />
+    <img src="images/fashionmnist_model_comparison.JPG" />
 </p>
