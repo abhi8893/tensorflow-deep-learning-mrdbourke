@@ -68,7 +68,7 @@ src/
 
 |            |            |
 | ---------- | ---------- |
-| concepts | `polynomial regression` `OLS` `sklearn LinearRegression` `basic tensorflow regression` `polynomial featurization` `creating tensorflow models` `improving tensorflow models` `evaluating tensorflow models` `loading tensorflow models` `saving tensorflow models` `box-cox transformation` |
+| concepts | `function optimization with tensorflow` `polynomial regression` `OLS` `sklearn LinearRegression` `basic tensorflow regression` `polynomial featurization` `creating tensorflow models` `improving tensorflow models` `evaluating tensorflow models` `loading tensorflow models` `saving tensorflow models` `box-cox transformation` |
 | data | `polynomial model sampling` `medical cost ` |
 | models | 🤖 **quadratic_regression:** `slr` `single_layer` `double_layer` `polyfeat` <br> 🤖 **medical_cost_prediction:** `3_layer_no_boxcox` `3_layer_boxcox` |
 
