@@ -1,4 +1,4 @@
-### Examples
+# Examples
 
 ## Fundamentals
 
@@ -202,6 +202,7 @@ tfp = TensorflowPlayground(dataset='circle',
 ```python
 tfp.data.plot()
 ```
+
 ![](images/tfplayground_data.jpg)
 
 `Train the model!`
@@ -246,9 +247,11 @@ Epoch 15/15
 ```python
 tfp.plot_learning_curve();
 ```
+
 ![](images/tfplayground_learning_curve.jpg)
 
-``
+```
+
 `Plot the predictions`
 
 ```python
@@ -263,6 +266,7 @@ for ax, subset in zip(axn, ['train', 'test']):
 
 fig.colorbar(cp);
 ```
+
 ![](images/tfplayground.jpg)
 
 `Analyze the peformance`
@@ -270,6 +274,7 @@ fig.colorbar(cp);
 ```python
 tfp.plot_confusion_matrix();
 ```
+
 ![](images/tfplayground_confusion_matrix.jpg)
 
 
@@ -300,12 +305,14 @@ Plot the label counts
 ```python
 imgds.plot_labelcounts();
 ```
+
 ![](images/fashionmnist_labelanalyzer_plot.jpg)
 
 View random images
 ```python
 imgds.view_random_images(class_names='all', n_each=2, subset='train');
 ```
+
 ![](images/fashionmnist_imgds_rand_images.jpg)
 
 Model Performance Comparison
