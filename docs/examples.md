@@ -1,4 +1,4 @@
-### Examples
+# Examples
 
 ## Fundamentals
 
@@ -202,6 +202,7 @@ tfp = TensorflowPlayground(dataset='circle',
 ```python
 tfp.data.plot()
 ```
+
 ![](images/tfplayground_data.jpg)
 
 `Train the model!`
@@ -246,9 +247,11 @@ Epoch 15/15
 ```python
 tfp.plot_learning_curve();
 ```
+
 ![](images/tfplayground_learning_curve.jpg)
 
-``
+```
+
 `Plot the predictions`
 
 ```python
@@ -263,6 +266,7 @@ for ax, subset in zip(axn, ['train', 'test']):
 
 fig.colorbar(cp);
 ```
+
 ![](images/tfplayground.jpg)
 
 `Analyze the peformance`
@@ -270,6 +274,7 @@ fig.colorbar(cp);
 ```python
 tfp.plot_confusion_matrix();
 ```
+
 ![](images/tfplayground_confusion_matrix.jpg)
 
 
@@ -300,13 +305,15 @@ Plot the label counts
 ```python
 imgds.plot_labelcounts();
 ```
-![](images/fashionmnist_labelanalyzer_plot.JPG)
+
+![](images/fashionmnist_labelanalyzer_plot.jpg)
 
 View random images
 ```python
 imgds.view_random_images(class_names='all', n_each=2, subset='train');
 ```
-![](images/fashionmnist_imgds_rand_images.JPG)
+
+![](images/fashionmnist_imgds_rand_images.jpg)
 
 Model Performance Comparison
 ```python
@@ -317,6 +324,188 @@ clf_comp.calculate_metric_comparison_df()
 clf_comp.plot_metric_comparison_df();
 ```
 
-<p>
-    <img src="images/fashionmnist_model_comparison.JPG" />
-</p>
+![](images/fashionmnist_model_comparison.JPG)
+
+## `Computer Vision`
+
+### `Pizza Steak Image Classifier`
+
+`ClassicImageDataDirectory`
+
+```python
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from src.image import ClassicImageDataDirectory
+
+data_dir = '../data/pizza_steak/'
+subsets = ['train', 'test']
+class_names = ['pizza', 'steak']
+
+imgdir = ClassicImageDataDirectory(data_dir, target_image_size=(224, 224), dtype=np.uint8)
+```
+
+Class Names
+
+```python
+imgdir.class_names, imgdir.class_labels
+```
+```
+(('steak', 'pizza'), (0, 1))
+```
+
+Counts
+
+```python
+imgdir.labelcountdf
+```
+| | | | | |
+|--|--|--|--|--|
+|	|label|	name|	count_train|	count_test|
+0	|0	|steak|	750|	250|
+1	|1	|pizza|	750|	250|
+
+Visualize Counts
+```python
+imgdir.plot_labelcounts()
+```
+
+![](images/pizza_steak_labelcount.jpg)
+
+Load and view a batch
+
+```python
+datagen = imgdir.load(32)
+batch = next(datagen)
+batch.view_random_images(class_names='all', n_each=3);
+```
+![](images/pizza_steak_batch.jpg)
+
+Model Performance Comparison
+
+![](images/pizza_steak_model_comparison.jpg)
+
+Prediction on random image
+
+```python
+view_random_prediction(model=tfmodels['TinyVGG-data-augment'], data_dir='../data/pizza_steak/', subset='test', datagen=test_datagen, target_image_size=(224, 224));
+```
+
+![](images/pizza_steak_rand_prediction.jpg)
+
+## `Transfer Learning`
+
+### Image Classification Experiments
+
+```python
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import tensorflow.keras.layers.experimental.preprocessing as KerasPreprocessing
+import tensorflow as tf
+from tensorflow.keras import layers, losses, callbacks, optimizers
+from src.evaluate import KerasMetrics
+from pathlib import Path
+
+from src.image import ImageClassificationExperiment
+
+TFHUB_LOGDIR = str(Path(os.path.abspath('../tensorboard_logs/101_food_multiclass_classification')))
+
+experiments = {} # to store all experiments
+
+exp_1 = ImageClassificationExperiment(name='efficientnetb0_fine_tune_10_percent', 
+                                    tfhub_log_dir=TFHUB_LOGDIR)
+exp_1.preprocess_data(scale=False)
+exp_1.setup_directories(data_dir='../data/101_food_classes_10_percent/')
+exp_1.import_data_from_directories()
+```
+```
+Found 6060 images belonging to 101 classes.
+Found 1515 images belonging to 101 classes.
+Found 25250 images belonging to 101 classes.
+```
+
+```python
+exp_1.create_model(pretrained_model=tf.keras.applications.EfficientNetB0(include_top=False),
+                 downstream_model=None) # None sets a default GlobalMaxPool2D downstream layer   
+exp_1.compile_model()
+```
+Train in `feature_extraction` mode for 5 epochs
+
+```python
+exp_1.run(5, tfhub_log=True)
+```
+```
+Saving TensorBoard log files to " C:\Users\bhati\Google Drive\projects\Tensorflow-tutorial-Daniel-Bourke\tensorboard_logs\101_food_multiclass_classification\efficientnetb0_fine_tune_10_percent\feature_extraction\20210605-141956"
+Epoch 1/5
+190/190 [==============================] - 81s 392ms/step - loss: 4.1402 - f1: 0.0034 - accuracy: 0.1222 - val_loss: 2.8358 - val_f1: 0.0861 - val_accuracy: 0.3525
+Epoch 2/5
+190/190 [==============================] - 66s 345ms/step - loss: 2.6281 - f1: 0.1078 - accuracy: 0.4233 - val_loss: 2.3871 - val_f1: 0.2165 - val_accuracy: 0.4277
+Epoch 3/5
+190/190 [==============================] - 65s 341ms/step - loss: 2.1849 - f1: 0.2431 - accuracy: 0.4957 - val_loss: 2.2139 - val_f1: 0.3197 - val_accuracy: 0.4521
+Epoch 4/5
+190/190 [==============================] - 67s 350ms/step - loss: 1.8822 - f1: 0.3489 - accuracy: 0.5575 - val_loss: 2.1186 - val_f1: 0.3495 - val_accuracy: 0.4686
+Epoch 5/5
+190/190 [==============================] - 73s 381ms/step - loss: 1.7409 - f1: 0.4056 - accuracy: 0.5916 - val_loss: 2.0706 - val_f1: 0.3880 - val_accuracy: 0.4746
+```
+
+Train in `fine_tuning` mode for another 5 with last 10 layers unfreezed
+
+```python
+exp_1.set_training_mode('fine_tuning')
+exp_1.compile_model(learning_rate=0.0001) # lower the learning rate by 1/10th for fine tuning
+exp_1.run(5, tfhub_log=True)
+```
+```
+Saving TensorBoard log files to " C:\Users\bhati\Google Drive\projects\Tensorflow-tutorial-Daniel-Bourke\tensorboard_logs\101_food_multiclass_classification\efficientnetb0_fine_tune_10_percent\fine_tuning\20210605-142806"
+Epoch 5/9
+190/190 [==============================] - 104s 509ms/step - loss: 1.6857 - f1: 0.4295 - accuracy: 0.5943 - val_loss: 2.0144 - val_f1: 0.4419 - val_accuracy: 0.4865
+Epoch 6/9
+190/190 [==============================] - 81s 427ms/step - loss: 1.4924 - f1: 0.5119 - accuracy: 0.6456 - val_loss: 1.9807 - val_f1: 0.4578 - val_accuracy: 0.5030
+Epoch 7/9
+190/190 [==============================] - 69s 361ms/step - loss: 1.3978 - f1: 0.5517 - accuracy: 0.6653 - val_loss: 1.9626 - val_f1: 0.4754 - val_accuracy: 0.5076
+Epoch 8/9
+190/190 [==============================] - 68s 359ms/step - loss: 1.3178 - f1: 0.5747 - accuracy: 0.6802 - val_loss: 1.9427 - val_f1: 0.4843 - val_accuracy: 0.5135
+Epoch 9/9
+190/190 [==============================] - 68s 359ms/step - loss: 1.2405 - f1: 0.6016 - accuracy: 0.7101 - val_loss: 1.9384 - val_f1: 0.4925 - val_accuracy: 0.5149
+```
+Learning Curve
+
+```python
+experiments[exp_1.name] = exp_1 # Store it
+exp_1.plot_learning_curve();
+```
+![](images/food_vision_mini_exp_learning_curve.jpg)
+
+Now create another experiment with `resnet50v2`
+
+```python
+exp_2 = ImageClassificationExperiment(name='resnet50v2_fine_tune_10_percent', tfhub_log_dir=TFHUB_LOGDIR)
+```
+
+Compare the performance of the models
+```python
+from src.evaluate import ClassificationPerformanceComparer
+models = {exp.name: exp.model for exp in experiments.values()}
+clf_comp = ClassificationPerformanceComparer(models, exp.test_data)
+clf_comp.calculate_metric_comparison_df()
+clf_comp.plot_metric_comparison_df();
+```
+
+![](images/food_vision_mini_exp_model_comparison.jpg)
+
+`EfficientNetB0` consistently outperforms `ResNet50V2`
+
+View Random Prediction
+
+```python
+from src.image import ClassicImageDataDirectory
+imgdir = ClassicImageDataDirectory(data_dir='../data/101_food_classes_10_percent/',
+                                   target_image_size=(224, 224), dtype=np.uint8)
+                                            
+imgdir.view_random_prediction(experiments['efficientnetb0_fine_tune_10_percent'].model,
+                                          subset='test', datagen=exp.test_datagen);
+```
+
+![](images/food_vision_mini_exp_rand_prediction.jpg)
+
+
