@@ -288,8 +288,6 @@ class_names =  ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
 n_classes = len(class_names)
 ```
 
-
-
 Custom `ImageDataset`
 
 ```python
@@ -319,5 +317,6 @@ clf_comp.calculate_metric_comparison_df()
 clf_comp.plot_metric_comparison_df();
 ```
 
-![](images/fashionmnist_model_comparison.jpg)
-
+<p>
+    <img src="images/fashionmnist_model_comparison.jpg" />
+</p>
