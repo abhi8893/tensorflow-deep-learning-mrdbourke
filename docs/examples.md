@@ -271,3 +271,51 @@ fig.colorbar(cp);
 tfp.plot_confusion_matrix();
 ```
 ![](images/tfplayground_confusion_matrix.jpg)
+
+
+### `Fashion MNIST`
+
+```python
+from tensorflow.keras.datasets import fashion_mnist
+
+# The data has already been sorted into training and testing sets
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+
+# Name of the classes
+class_names =  ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
+               'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+
+n_classes = len(class_names)
+```
+
+
+
+Custom `ImageDataset`
+
+```python
+from src.image import ImageDataset
+
+imgds = ImageDataset((train_images, train_labels), (test_images, test_labels), class_names)
+```
+
+Plot the label counts
+```python
+imgds.plot_labelcounts();
+```
+![](images/fashionmnist_labelanalyzer_plot.JPG)
+
+View random images
+```python
+imgds.view_random_images(class_names='all', n_each=2, subset='train');
+```
+![](images/fashionmnist_imgds_rand_images.JPG)
+
+Model Performance Comparison
+```python
+from src.evaluate import ClassificationPerformanceComparer
+
+clf_comp = ClassificationPeformanceComparer(models, test_data)
+clf_comp.calculate_metric_comparison_df()
+clf_comp.plot_metric_comparison_df();
+```
+![](images/fashionmnist_model_comparison.jpg)
