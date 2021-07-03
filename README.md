@@ -2,6 +2,12 @@
 
 This is my exploration of [mrdbourke](https://github.com/mrdbourke)'s awesome 🔥 course on Deep Learning using Tensorflow.
 
+## Original Resources
+
+- [Original Repo](https://github.com/mrdbourke/tensorflow-deep-learning)
+- [Youtube Playlist](https://www.youtube.com/playlist?list=PL6vjgQ2-qJFfU2vF6-lG9DlSa4tROkzt9)
+- [Zero To Mastery - Original Course](https://academy.zerotomastery.io/p/learn-tensorflow)
+
 ## How did I approach learning?
 
 > I wrote and rewrote all of the code myself. Yes, I am serious. Even though there will be much similarity with the original course notebooks, but I rewrote every markdown, every line of code in this entire repository. I took my time to:
@@ -107,12 +113,3 @@ src/
 | **concepts** | `anomaly detection as classification` `forecasting as supervised regression` `train-test split for time series` `time series window-horizon` `multivariate time series` `data uncertainty` `model uncertainty` `open and closed systems` `turkey problem` `black swan events` `tensorflow Layer subclassing` `ensemble tricks –  variation on loss function` `window sizes` `seeds` `forecast uncertainty` |
 | **data** | ``bitcoin_prices`` |
 | **models** | 🤖 **bitcoin_time_series_prediction**: `naive-model-baseline_W1H1` `simple-dense_W7H1` `simple-dense_W30H1` `simple-dense_W30H7` `Conv1D_W7H1` `LSTM_W7H1` `multivariate-dense_W7H1` `NbeatsGeneric_W7H1` `ensemble-mean_W7H1` `ensemble-median_W7H1` `turkey-model_W7H1` |
-
-
-## Original Resources
-
-
-- [Original Repo](https://github.com/mrdbourke/tensorflow-deep-learning)
-- [Youtube Playlist](https://www.youtube.com/playlist?list=PL6vjgQ2-qJFfU2vF6-lG9DlSa4tROkzt9)
-- [Zero To Mastery - Original Course](https://academy.zerotomastery.io/p/learn-tensorflow)
-
