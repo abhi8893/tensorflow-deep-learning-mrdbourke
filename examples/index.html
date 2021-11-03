@@ -1,0 +1,1593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://abhi8893.github.io/tensorflow-deep-learning-mrdbourke/examples/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Examples - Tensorflow Deep Learning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#examples" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Tensorflow Deep Learning" class="md-header__button md-logo" aria-label="Tensorflow Deep Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tensorflow Deep Learning
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Examples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/abhi8893/tensorflow-deep-learning-mrdbourke/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    abhi8893/tensorflow-deep-learning-mrdbourke
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Tensorflow Deep Learning" class="md-nav__button md-logo" aria-label="Tensorflow Deep Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Tensorflow Deep Learning
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/abhi8893/tensorflow-deep-learning-mrdbourke/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    abhi8893/tensorflow-deep-learning-mrdbourke
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Examples
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fundamentals" class="md-nav__link">
+    Fundamentals
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summarizing-a-tensor" class="md-nav__link">
+    Summarizing a tensor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-network-regression" class="md-nav__link">
+    Neural Network Regression
+  </a>
+  
+    <nav class="md-nav" aria-label="Neural Network Regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polynomialmodel" class="md-nav__link">
+    PolynomialModel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olsregressor" class="md-nav__link">
+    OLSRegressor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quadratic-regression-model-comparison" class="md-nav__link">
+    Quadratic Regression Model Comparison
+  </a>
+  
+    <nav class="md-nav" aria-label="Quadratic Regression Model Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparing-model-weights" class="md-nav__link">
+    Comparing Model Weights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boxcoxtransformer" class="md-nav__link">
+    BoxCoxTransformer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-network-classification" class="md-nav__link">
+    Neural Network Classification
+  </a>
+  
+    <nav class="md-nav" aria-label="Neural Network Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorflowplayground" class="md-nav__link">
+    TensorflowPlayground
+  </a>
+  
+    <nav class="md-nav" aria-label="TensorflowPlayground">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fashion-mnist" class="md-nav__link">
+    Fashion MNIST
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computer-vision" class="md-nav__link">
+    Computer Vision
+  </a>
+  
+    <nav class="md-nav" aria-label="Computer Vision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pizza-steak-image-classifier" class="md-nav__link">
+    Pizza Steak Image Classifier
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    Transfer Learning
+  </a>
+  
+    <nav class="md-nav" aria-label="Transfer Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-classification-experiments" class="md-nav__link">
+    Image Classification Experiments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Fundamentals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fundamentals" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fundamentals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-tensorflow-fundamentals/" class="md-nav__link">
+        Tensorflow Fundamentals
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Neural Network Regression
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Neural Network Regression" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Neural Network Regression
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01A-tensorflow-neural-network-regression/" class="md-nav__link">
+        Simple Linear Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01B-tensorflow-neural-network-regression/" class="md-nav__link">
+        Polynomial Regression with Tensorflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01C-tensorflow-neural-network-regression/" class="md-nav__link">
+        Medical Cost Prediction
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Neural Network Classification
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Neural Network Classification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Neural Network Classification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02A-tensorflow-playground-reimplementation/" class="md-nav__link">
+        Tensorflow Playground Reimplementation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02B-Fashion-MNIST-larger-example/" class="md-nav__link">
+        Fashion MNIST
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Computer Vision
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Computer Vision" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Vision
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03A-Pizza-Steak-Image-Classification/" class="md-nav__link">
+        Pizza Steak Classifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03B-10-Food-Multiclass-Classification/" class="md-nav__link">
+        10 Food Multiclass Classification
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Transfer Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Transfer Learning" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Transfer Learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Transfer-Learning-Part1-Feature-Extraction/" class="md-nav__link">
+        Feature Extraction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Transfer-Learning-Part2-Fine-Tuning/" class="md-nav__link">
+        Fine Tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Transfer-Learning-Part3-Food-Vision-Mini/" class="md-nav__link">
+        Food Vision Mini
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-Milestone-Project-1-Food-Vision-Big/" class="md-nav__link">
+        Food Vision Big
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Natural Language Processing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Natural Language Processing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Natural Language Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-NLP-Basics-in-Tensorflow-Disaster-Tweets/" class="md-nav__link">
+        Disaster Tweets Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-SkimLit-NLP-Milestone-Project-2/" class="md-nav__link">
+        Restructuring PubMed Abstracts using NLP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Time Series Forecasting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time Series Forecasting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Time Series Forecasting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-Milestone-Project-3-Time-Series-Forecasting-in-Tensorflow/" class="md-nav__link">
+        Bitcoin Price Forecasting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fundamentals" class="md-nav__link">
+    Fundamentals
+  </a>
+  
+    <nav class="md-nav" aria-label="Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summarizing-a-tensor" class="md-nav__link">
+    Summarizing a tensor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-network-regression" class="md-nav__link">
+    Neural Network Regression
+  </a>
+  
+    <nav class="md-nav" aria-label="Neural Network Regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polynomialmodel" class="md-nav__link">
+    PolynomialModel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olsregressor" class="md-nav__link">
+    OLSRegressor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quadratic-regression-model-comparison" class="md-nav__link">
+    Quadratic Regression Model Comparison
+  </a>
+  
+    <nav class="md-nav" aria-label="Quadratic Regression Model Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparing-model-weights" class="md-nav__link">
+    Comparing Model Weights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boxcoxtransformer" class="md-nav__link">
+    BoxCoxTransformer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-network-classification" class="md-nav__link">
+    Neural Network Classification
+  </a>
+  
+    <nav class="md-nav" aria-label="Neural Network Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorflowplayground" class="md-nav__link">
+    TensorflowPlayground
+  </a>
+  
+    <nav class="md-nav" aria-label="TensorflowPlayground">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fashion-mnist" class="md-nav__link">
+    Fashion MNIST
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computer-vision" class="md-nav__link">
+    Computer Vision
+  </a>
+  
+    <nav class="md-nav" aria-label="Computer Vision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pizza-steak-image-classifier" class="md-nav__link">
+    Pizza Steak Image Classifier
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    Transfer Learning
+  </a>
+  
+    <nav class="md-nav" aria-label="Transfer Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-classification-experiments" class="md-nav__link">
+    Image Classification Experiments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/abhi8893/tensorflow-deep-learning-mrdbourke/edit/master/docs/examples.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="examples">Examples</h1>
+<h2 id="fundamentals">Fundamentals</h2>
+<h3 id="summarizing-a-tensor"><code>Summarizing a tensor</code></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">src.utils</span> <span class="kn">import</span> <span class="n">describe_tensor</span>
+
+<span class="c1"># set seed</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># make a random tensor</span>
+<span class="n">tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># describe the tensor</span>
+<span class="n">describe_tensor</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Datatype: &lt;dtype: &#39;float32&#39;&gt;
+Number of dimensions: 3
+Shape of tensor: (1, 3, 3)
+Elements along the 0 axis: 1
+Elements along the last axis: 3
+Total number of elements: 9
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src.utils</span> <span class="kn">import</span> <span class="n">get_tensor_statistics</span>
+
+<span class="c1"># get basic statistics of the tensor</span>
+<span class="n">get_tensor_statistics</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>min: tf.Tensor(-2.3880599, shape=(), dtype=float32)
+max: tf.Tensor(1.6994323, shape=(), dtype=float32)
+mean: tf.Tensor(-0.3720852, shape=(), dtype=float32)
+sum: tf.Tensor(-3.3487668, shape=(), dtype=float32)
+std: tf.Tensor(1.1511972, shape=(), dtype=float32)
+variance: tf.Tensor(1.325255, shape=(), dtype=float32)
+</code></pre></div></p>
+<h2 id="neural-network-regression">Neural Network Regression</h2>
+<h3 id="polynomialmodel"><code>PolynomialModel</code></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">src.models</span> <span class="kn">import</span> <span class="n">PolynomialModel</span>
+
+<span class="c1"># input 1D feature</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span> <span class="c1"># range</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># no of data points</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># You can randomly sample as well</span>
+
+<span class="c1"># polynomial model of any degree</span>
+<span class="n">quadmodel</span> <span class="o">=</span> <span class="n">PolynomialModel</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Now sample the targets</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">quadmodel</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">add_noise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;randomly sampled&#39;</span><span class="p">)</span>
+<span class="n">quadmodel</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True relationship&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;quadratic&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../images/quadmodel.png" /></p>
+<h3 id="olsregressor"><code>OLSRegressor</code></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src.models</span> <span class="kn">import</span> <span class="n">OLSRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">olsmodel</span> <span class="o">=</span> <span class="n">OLSRegressor</span><span class="p">(</span><span class="n">add_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">olsmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">]),</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">linregmodel</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">linregmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">]),</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OLSRegressor results:</span><span class="se">\n</span><span class="s1">----&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;intercept: </span><span class="si">{</span><span class="n">olsmodel</span><span class="o">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, coefficients: </span><span class="si">{</span><span class="n">olsmodel</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LinearRegression results:</span><span class="se">\n</span><span class="s1">----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;intercept: </span><span class="si">{</span><span class="n">linregmodel</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1">, coefficients: </span><span class="si">{</span><span class="n">linregmodel</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>OLSRegressor results:
+----
+intercept: 1.2699100651176205, coefficients: [ 1.91208921 -0.09832959]
+----
+
+LinearRegression results:
+----
+
+intercept: 1.269910065117589, coefficients: [ 1.91208921 -0.09832959]
+----
+</code></pre></div>
+<h3 id="quadratic-regression-model-comparison"><code>Quadratic Regression Model Comparison</code></h3>
+<p><img alt="" src="../images/quadratic_regression_model_comparison.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Parameters</th>
+<th>RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slr</td>
+<td>2</td>
+<td>23.92</td>
+</tr>
+<tr>
+<td>single_layer</td>
+<td>49</td>
+<td>17.15</td>
+</tr>
+<tr>
+<td>double_layer</td>
+<td>177</td>
+<td>17.24</td>
+</tr>
+<tr>
+<td>polyfeat</td>
+<td>3</td>
+<td>15.27</td>
+</tr>
+<tr>
+<td>true relationship</td>
+<td>-</td>
+<td>15.11</td>
+</tr>
+</tbody>
+</table>
+<p><code>polyfeat</code> was a simple linear regression model but with 2 degree polynomial features. This had the lowest number of parameters and also the lowest RMSE! Goes on to show the importance of feature engineering, and also kernel methods even for neural networks!</p>
+<h4 id="comparing-model-weights"><code>Comparing Model Weights</code></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src.utils</span> <span class="kn">import</span> <span class="n">check_tfmodels_weight_equality</span>
+
+<span class="c1"># train model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># save model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">)</span>
+<span class="c1"># load model</span>
+<span class="n">loaded_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">)</span>
+<span class="c1"># check if weights are equal</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">check_tfmodels_weight_equality</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">loaded_model</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>True
+</code></pre></div>
+<h3 id="boxcoxtransformer"><code>BoxCoxTransformer</code></h3>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">src.preprocess</span> <span class="kn">import</span> <span class="n">BoxCoxTransformer</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/medical_cost/medical_cost.csv&#39;</span><span class="p">)</span>
+<span class="n">orig</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="n">bctrans</span> <span class="o">=</span> <span class="n">bctrans</span> <span class="o">=</span> <span class="n">BoxCoxTransformer</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">transformed</span> <span class="o">=</span> <span class="n">bctrans</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">orig</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">orig</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">transformed</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">);</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;box-cox transformed&#39;</span><span class="p">);</span>
+</code></pre></div>
+<img alt="" src="../images/box-cox_transformed.jpg" /></p>
+<h2 id="neural-network-classification">Neural Network Classification</h2>
+<h3 id="tensorflowplayground"><code>TensorflowPlayground</code></h3>
+<h4 id="features">Features</h4>
+<p>A teeny tiny reimplementation of the https://playground.tensorflow.org/</p>
+<ul>
+<li>Start, pause, resume and reset training<ul>
+<li>Set max epochs</li>
+</ul>
+</li>
+<li>Adjust Learning rate (+ Optimizer)</li>
+<li>Adjust activation (overall except last layer)<ul>
+<li>First layer activation option also</li>
+</ul>
+</li>
+<li>Add Regularization (Overall all weights, [L1, L2])<ul>
+<li>Adjusting regularization rate</li>
+</ul>
+</li>
+<li>Choose datasets - circle, exclusive_or, gaussian, spiral<ul>
+<li>Ratio of training to test data</li>
+<li>Noise level</li>
+</ul>
+</li>
+<li>Choose Features - X1, X2, X1_sq,X2_sq, X1X2, sin(X1), sin(X2)</li>
+<li>Choose architecture - no of hidden layers, no or neurons in each layer</li>
+<li>Monitor/Plot learning curves</li>
+<li>Monitor/Plot decision boundary<ul>
+<li>Option to show test data</li>
+<li>Option to discretize output</li>
+</ul>
+</li>
+</ul>
+<p><code>Setup your playground!</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">tfp</span> <span class="o">=</span> <span class="n">TensorflowPlayground</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;circle&#39;</span><span class="p">,</span> 
+                           <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;X1&#39;</span><span class="p">,</span> <span class="s1">&#39;X2&#39;</span><span class="p">],</span> 
+                           <span class="n">neurons</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                           <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span>
+                           <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                           <span class="n">scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p><code>Plot the data!</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">tfp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../images/tfplayground_data.jpg" /></p>
+<p><code>Train the model!</code></p>
+<p><div class="highlight"><pre><span></span><code><span class="n">tfp</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Epoch 1/15
+12/12 [==============================] - 1s 3ms/step - loss: 0.7062
+Epoch 2/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6944
+Epoch 3/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.7057
+Epoch 4/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6963
+Epoch 5/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6937
+Epoch 6/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6931
+Epoch 7/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6909
+Epoch 8/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6891
+Epoch 9/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6931
+Epoch 10/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6960
+Epoch 11/15
+12/12 [==============================] - 0s 5ms/step - loss: 0.6851
+Epoch 12/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6787
+Epoch 13/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6704
+Epoch 14/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6470
+Epoch 15/15
+12/12 [==============================] - 0s 3ms/step - loss: 0.6076
+</code></pre></div>
+<code>Plot the learning curve!</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">tfp</span><span class="o">.</span><span class="n">plot_learning_curve</span><span class="p">();</span>
+</code></pre></div>
+<p><img alt="" src="../images/tfplayground_learning_curve.jpg" /></p>
+<div class="highlight"><pre><span></span><code>`Plot the predictions`
+
+```python
+fig, axn = plt.subplots(1, 2, figsize=(12, 4))
+
+for ax, subset in zip(axn, [&#39;train&#39;, &#39;test&#39;]):
+    cp = tfp.plot_decision_function(ax=ax)
+    tfp.data.plot(subset=subset, ax=cp.axes)
+
+    ax.set_title(subset, fontdict=dict(weight=&#39;bold&#39;, size=20))
+
+
+fig.colorbar(cp);
+</code></pre></div>
+<p><img alt="" src="../images/tfplayground.jpg" /></p>
+<p><code>Analyze the peformance</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">tfp</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">();</span>
+</code></pre></div>
+<p><img alt="" src="../images/tfplayground_confusion_matrix.jpg" /></p>
+<h3 id="fashion-mnist"><code>Fashion MNIST</code></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">fashion_mnist</span>
+
+<span class="c1"># The data has already been sorted into training and testing sets</span>
+<span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">fashion_mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="c1"># Name of the classes</span>
+<span class="n">class_names</span> <span class="o">=</span>  <span class="p">[</span><span class="s1">&#39;T-shirt/top&#39;</span><span class="p">,</span> <span class="s1">&#39;Trouser&#39;</span><span class="p">,</span> <span class="s1">&#39;Pullover&#39;</span><span class="p">,</span> <span class="s1">&#39;Dress&#39;</span><span class="p">,</span> <span class="s1">&#39;Coat&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;Sandal&#39;</span><span class="p">,</span> <span class="s1">&#39;Shirt&#39;</span><span class="p">,</span> <span class="s1">&#39;Sneaker&#39;</span><span class="p">,</span> <span class="s1">&#39;Bag&#39;</span><span class="p">,</span> <span class="s1">&#39;Ankle boot&#39;</span><span class="p">]</span>
+
+<span class="n">n_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">)</span>
+</code></pre></div>
+<p>Custom <code>ImageDataset</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src.image</span> <span class="kn">import</span> <span class="n">ImageDataset</span>
+
+<span class="n">imgds</span> <span class="o">=</span> <span class="n">ImageDataset</span><span class="p">((</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">),</span> <span class="n">class_names</span><span class="p">)</span>
+</code></pre></div>
+<p>Plot the label counts
+<div class="highlight"><pre><span></span><code><span class="n">imgds</span><span class="o">.</span><span class="n">plot_labelcounts</span><span class="p">();</span>
+</code></pre></div></p>
+<p><img alt="" src="../images/fashionmnist_labelanalyzer_plot.jpg" /></p>
+<p>View random images
+<div class="highlight"><pre><span></span><code><span class="n">imgds</span><span class="o">.</span><span class="n">view_random_images</span><span class="p">(</span><span class="n">class_names</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">n_each</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<p><img alt="" src="../images/fashionmnist_imgds_rand_images.jpg" /></p>
+<p>Model Performance Comparison
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src.evaluate</span> <span class="kn">import</span> <span class="n">ClassificationPerformanceComparer</span>
+
+<span class="n">clf_comp</span> <span class="o">=</span> <span class="n">ClassificationPeformanceComparer</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
+<span class="n">clf_comp</span><span class="o">.</span><span class="n">calculate_metric_comparison_df</span><span class="p">()</span>
+<span class="n">clf_comp</span><span class="o">.</span><span class="n">plot_metric_comparison_df</span><span class="p">();</span>
+</code></pre></div></p>
+<p><img alt="" src="images/fashionmnist_model_comparison.JPG" /></p>
+<h2 id="computer-vision"><code>Computer Vision</code></h2>
+<h3 id="pizza-steak-image-classifier"><code>Pizza Steak Image Classifier</code></h3>
+<p><code>ClassicImageDataDirectory</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">src.image</span> <span class="kn">import</span> <span class="n">ClassicImageDataDirectory</span>
+
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/pizza_steak/&#39;</span>
+<span class="n">subsets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
+<span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;steak&#39;</span><span class="p">]</span>
+
+<span class="n">imgdir</span> <span class="o">=</span> <span class="n">ClassicImageDataDirectory</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">target_image_size</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+</code></pre></div>
+<p>Class Names</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">imgdir</span><span class="o">.</span><span class="n">class_names</span><span class="p">,</span> <span class="n">imgdir</span><span class="o">.</span><span class="n">class_labels</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>((&#39;steak&#39;, &#39;pizza&#39;), (0, 1))
+</code></pre></div></p>
+<p>Counts</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">imgdir</span><span class="o">.</span><span class="n">labelcountdf</span>
+</code></pre></div>
+| | | | | |
+|--|--|--|--|--|
+|   |label| name|   count_train|    count_test|
+0   |0  |steak| 750|    250|
+1   |1  |pizza| 750|    250|</p>
+<p>Visualize Counts
+<div class="highlight"><pre><span></span><code><span class="n">imgdir</span><span class="o">.</span><span class="n">plot_labelcounts</span><span class="p">()</span>
+</code></pre></div></p>
+<p><img alt="" src="../images/pizza_steak_labelcount.jpg" /></p>
+<p>Load and view a batch</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">datagen</span> <span class="o">=</span> <span class="n">imgdir</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">datagen</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">view_random_images</span><span class="p">(</span><span class="n">class_names</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">n_each</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
+<img alt="" src="../images/pizza_steak_batch.jpg" /></p>
+<p>Model Performance Comparison</p>
+<p><img alt="" src="../images/pizza_steak_model_comparison.jpg" /></p>
+<p>Prediction on random image</p>
+<div class="highlight"><pre><span></span><code><span class="n">view_random_prediction</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">tfmodels</span><span class="p">[</span><span class="s1">&#39;TinyVGG-data-augment&#39;</span><span class="p">],</span> <span class="n">data_dir</span><span class="o">=</span><span class="s1">&#39;../data/pizza_steak/&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">datagen</span><span class="o">=</span><span class="n">test_datagen</span><span class="p">,</span> <span class="n">target_image_size</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">));</span>
+</code></pre></div>
+<p><img alt="" src="../images/pizza_steak_rand_prediction.jpg" /></p>
+<h2 id="transfer-learning"><code>Transfer Learning</code></h2>
+<h3 id="image-classification-experiments">Image Classification Experiments</h3>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.image</span> <span class="kn">import</span> <span class="n">ImageDataGenerator</span>
+<span class="kn">import</span> <span class="nn">tensorflow.keras.layers.experimental.preprocessing</span> <span class="k">as</span> <span class="nn">KerasPreprocessing</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">optimizers</span>
+<span class="kn">from</span> <span class="nn">src.evaluate</span> <span class="kn">import</span> <span class="n">KerasMetrics</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">src.image</span> <span class="kn">import</span> <span class="n">ImageClassificationExperiment</span>
+
+<span class="n">TFHUB_LOGDIR</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../tensorboard_logs/101_food_multiclass_classification&#39;</span><span class="p">)))</span>
+
+<span class="n">experiments</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># to store all experiments</span>
+
+<span class="n">exp_1</span> <span class="o">=</span> <span class="n">ImageClassificationExperiment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;efficientnetb0_fine_tune_10_percent&#39;</span><span class="p">,</span> 
+                                    <span class="n">tfhub_log_dir</span><span class="o">=</span><span class="n">TFHUB_LOGDIR</span><span class="p">)</span>
+<span class="n">exp_1</span><span class="o">.</span><span class="n">preprocess_data</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">exp_1</span><span class="o">.</span><span class="n">setup_directories</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="s1">&#39;../data/101_food_classes_10_percent/&#39;</span><span class="p">)</span>
+<span class="n">exp_1</span><span class="o">.</span><span class="n">import_data_from_directories</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Found 6060 images belonging to 101 classes.
+Found 1515 images belonging to 101 classes.
+Found 25250 images belonging to 101 classes.
+</code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code><span class="n">exp_1</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="n">pretrained_model</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">EfficientNetB0</span><span class="p">(</span><span class="n">include_top</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+                 <span class="n">downstream_model</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># None sets a default GlobalMaxPool2D downstream layer   </span>
+<span class="n">exp_1</span><span class="o">.</span><span class="n">compile_model</span><span class="p">()</span>
+</code></pre></div>
+Train in <code>feature_extraction</code> mode for 5 epochs</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">exp_1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">tfhub_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Saving TensorBoard log files to &quot; C:\Users\bhati\Google Drive\projects\Tensorflow-tutorial-Daniel-Bourke\tensorboard_logs\101_food_multiclass_classification\efficientnetb0_fine_tune_10_percent\feature_extraction\20210605-141956&quot;
+Epoch 1/5
+190/190 [==============================] - 81s 392ms/step - loss: 4.1402 - f1: 0.0034 - accuracy: 0.1222 - val_loss: 2.8358 - val_f1: 0.0861 - val_accuracy: 0.3525
+Epoch 2/5
+190/190 [==============================] - 66s 345ms/step - loss: 2.6281 - f1: 0.1078 - accuracy: 0.4233 - val_loss: 2.3871 - val_f1: 0.2165 - val_accuracy: 0.4277
+Epoch 3/5
+190/190 [==============================] - 65s 341ms/step - loss: 2.1849 - f1: 0.2431 - accuracy: 0.4957 - val_loss: 2.2139 - val_f1: 0.3197 - val_accuracy: 0.4521
+Epoch 4/5
+190/190 [==============================] - 67s 350ms/step - loss: 1.8822 - f1: 0.3489 - accuracy: 0.5575 - val_loss: 2.1186 - val_f1: 0.3495 - val_accuracy: 0.4686
+Epoch 5/5
+190/190 [==============================] - 73s 381ms/step - loss: 1.7409 - f1: 0.4056 - accuracy: 0.5916 - val_loss: 2.0706 - val_f1: 0.3880 - val_accuracy: 0.4746
+</code></pre></div></p>
+<p>Train in <code>fine_tuning</code> mode for another 5 with last 10 layers unfreezed</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">exp_1</span><span class="o">.</span><span class="n">set_training_mode</span><span class="p">(</span><span class="s1">&#39;fine_tuning&#39;</span><span class="p">)</span>
+<span class="n">exp_1</span><span class="o">.</span><span class="n">compile_model</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">)</span> <span class="c1"># lower the learning rate by 1/10th for fine tuning</span>
+<span class="n">exp_1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">tfhub_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Saving TensorBoard log files to &quot; C:\Users\bhati\Google Drive\projects\Tensorflow-tutorial-Daniel-Bourke\tensorboard_logs\101_food_multiclass_classification\efficientnetb0_fine_tune_10_percent\fine_tuning\20210605-142806&quot;
+Epoch 5/9
+190/190 [==============================] - 104s 509ms/step - loss: 1.6857 - f1: 0.4295 - accuracy: 0.5943 - val_loss: 2.0144 - val_f1: 0.4419 - val_accuracy: 0.4865
+Epoch 6/9
+190/190 [==============================] - 81s 427ms/step - loss: 1.4924 - f1: 0.5119 - accuracy: 0.6456 - val_loss: 1.9807 - val_f1: 0.4578 - val_accuracy: 0.5030
+Epoch 7/9
+190/190 [==============================] - 69s 361ms/step - loss: 1.3978 - f1: 0.5517 - accuracy: 0.6653 - val_loss: 1.9626 - val_f1: 0.4754 - val_accuracy: 0.5076
+Epoch 8/9
+190/190 [==============================] - 68s 359ms/step - loss: 1.3178 - f1: 0.5747 - accuracy: 0.6802 - val_loss: 1.9427 - val_f1: 0.4843 - val_accuracy: 0.5135
+Epoch 9/9
+190/190 [==============================] - 68s 359ms/step - loss: 1.2405 - f1: 0.6016 - accuracy: 0.7101 - val_loss: 1.9384 - val_f1: 0.4925 - val_accuracy: 0.5149
+</code></pre></div>
+Learning Curve</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">experiments</span><span class="p">[</span><span class="n">exp_1</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">exp_1</span> <span class="c1"># Store it</span>
+<span class="n">exp_1</span><span class="o">.</span><span class="n">plot_learning_curve</span><span class="p">();</span>
+</code></pre></div>
+<img alt="" src="../images/food_vision_mini_exp_learning_curve.jpg" /></p>
+<p>Now create another experiment with <code>resnet50v2</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">exp_2</span> <span class="o">=</span> <span class="n">ImageClassificationExperiment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;resnet50v2_fine_tune_10_percent&#39;</span><span class="p">,</span> <span class="n">tfhub_log_dir</span><span class="o">=</span><span class="n">TFHUB_LOGDIR</span><span class="p">)</span>
+</code></pre></div>
+<p>Compare the performance of the models
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src.evaluate</span> <span class="kn">import</span> <span class="n">ClassificationPerformanceComparer</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span><span class="n">exp</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">model</span> <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="n">experiments</span><span class="o">.</span><span class="n">values</span><span class="p">()}</span>
+<span class="n">clf_comp</span> <span class="o">=</span> <span class="n">ClassificationPerformanceComparer</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">exp</span><span class="o">.</span><span class="n">test_data</span><span class="p">)</span>
+<span class="n">clf_comp</span><span class="o">.</span><span class="n">calculate_metric_comparison_df</span><span class="p">()</span>
+<span class="n">clf_comp</span><span class="o">.</span><span class="n">plot_metric_comparison_df</span><span class="p">();</span>
+</code></pre></div></p>
+<p><img alt="" src="../images/food_vision_mini_exp_model_comparison.jpg" /></p>
+<p><code>EfficientNetB0</code> consistently outperforms <code>ResNet50V2</code></p>
+<p>View Random Prediction</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src.image</span> <span class="kn">import</span> <span class="n">ClassicImageDataDirectory</span>
+<span class="n">imgdir</span> <span class="o">=</span> <span class="n">ClassicImageDataDirectory</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="s1">&#39;../data/101_food_classes_10_percent/&#39;</span><span class="p">,</span>
+                                   <span class="n">target_image_size</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">imgdir</span><span class="o">.</span><span class="n">view_random_prediction</span><span class="p">(</span><span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;efficientnetb0_fine_tune_10_percent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+                                          <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">datagen</span><span class="o">=</span><span class="n">exp</span><span class="o">.</span><span class="n">test_datagen</span><span class="p">);</span>
+</code></pre></div>
+<p><img alt="" src="../images/food_vision_mini_exp_rand_prediction.jpg" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../00-tensorflow-fundamentals/" class="md-footer__link md-footer__link--next" aria-label="Next: Tensorflow Fundamentals" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Tensorflow Fundamentals
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/abhi8893" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/abhishekbhatia8893/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
